@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Studio Ghibli Inspired</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="./header/Layer 1.png" type="image/png">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow-x: hidden;
+  background-color:none; /* hoặc nền tùy bé chọn cho phần còn lại */
+}
+/* Phần này mới nè */
+.hero-background {
+  background: url('https://genk.mediacdn.vn/2017/photo-18-1485152074215.jpg') no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh; /* 💥 full chiều cao màn hình */
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Main-content có thể giữ lại gradient overlay nếu bé muốn */
+.main-content {
+margin-top: 110px; /* đẩy nội dung xuống một chút */
+  padding: 80px 50px 30px; /* 👈 dịch xuống bằng padding dưới */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9));
+  color: white;
+  justify-content: flex-end; /* đẩy nội dung xuống cuối ảnh */
+}
+    /* ==== Header ==== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    header.scrolled {
+  background-color: #278e9c; /* xanh pastel dịu nè 🌿 */
+    }
+
+    /* chữ logo */
+    .ghibli-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* khoảng cách giữa logo và chữ */
+}
+
+.logo {
+  width: auto;
+  height: auto;
+}
+  .ghibli-box {
+  text-align: right;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Bóng mờ nhẹ */
+  font-family: Arial, sans-serif;
+  line-height: 1.1; /* Cho các dòng sát nhau */
+}
+.logo {
+    height: 70px;
+    margin-bottom: 0;
+}
+.studio {
+  font-size: 16px;
+  margin: 0;
+  color: white;
+}
+
+.ghibli {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.jp {
+  font-size: 16px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.studio {
+  font-size: 16px;
+  margin: 0;
+}
+
+.ghibli {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.jp {
+  font-size: 16px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* viên thuốc */
+
+.pill-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 12px;
+  margin-left: 30px;
+
+  padding: 10px 24px;
+  background-color: white;
+  color: #1a1a1a;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.pill-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3)
+  );
+  transform: skewX(-20deg);
+}
+
+.pill-btn:hover::before {
+  animation: shine 0.8s forwards;
+}
+
+@keyframes shine {
+  to {
+    left: 125%;
+  }
+}
+
+/* navigation bar */
+nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+    nav a:hover {
+      color: #ffc107;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #ffc107;
+      ;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+    nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .icons i {
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .search-box {
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+    }
+    /* Đếm sản phẩm trong giỏ hàng */
+    .cart-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 1px 5px;
+  font-size: 10px;
+  font-weight: bold;
+  min-width: 16px;
+  height: 16px;
+  line-height: 14px;
+  text-align: center;
+}
+
+
+    /* ==== Main Content ==== */
+    .main-content {
+      padding: 80px 50px 30px;
+      margin-top: 145px;
+      
+    }
+
+    .main-content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      margin-left: 30px;
+
+    }
+
+    .main-content p {
+      max-width: 600px;
+      line-height: 1.6;
+      margin-left: 30px;
+
+    }
+    .main-content {
+    background: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.7) 100%);
+    background-size: cover;
+    color:white;
+    
+}
+
+
+    /* ==== Cloud Animation ==== */
+    .cloud {
+      position: absolute;
+      top: 50px;
+      width: 200px;
+      opacity: 0.7;
+      animation: moveClouds 60s linear infinite;
+      z-index: 1;
+    }
+
+    .cloud:nth-child(1) {
+      left: -200px;
+      animation-delay: 0s;
+    }
+
+    .cloud:nth-child(2) {
+      left: -400px;
+      animation-delay: 15s;
+    }
+
+    .cloud:nth-child(3) {
+      left: -600px;
+      animation-delay: 30s;
+    }
+
+    @keyframes moveClouds {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(2000px);
+      }
+    }
+
+    /* ==== Totoro Chat Box ==== */
+    .chat-icon {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 60px;
+      background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+      background-size: cover;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .chat-box {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 300px;
+      background: white;
+      color: black;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 999;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    .chat-box header {
+      background: #4caf50;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .chat-box .messages {
+      padding: 15px;
+      height: 150px;
+      overflow-y: auto;
+    }
+
+    .chat-box input {
+      width: 100%;
+      border: none;
+      border-top: 1px solid #ccc;
+      padding: 10px;
+      outline: none;
+    }
+  
+    /* Chat button */
+    #chat-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border-radius: 50%;
+      border: none;
+      width: 60px;
+      height: 60px;
+      background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+      background-size: cover;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    /* Chat box */
+    #chat-box {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      background: #f7f7f7;
+      color: #333;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    #chat-header {
+      background: #8cc0a7;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #chat-body {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin: 5px 0;
+      padding: 8px 10px;
+      border-radius: 10px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background: #dff0d8;
+      align-self: flex-end;
+    }
+
+    .totoro {
+      background: #cfe2f3;
+      align-self: flex-start;
+    }
+
+    #chat-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+      background: #eee;
+    }
+
+    #message-input {
+      flex: 1;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    #send-btn, #emoji-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+  /* Thanh cuộn */
+    .pet {
+      position: fixed;
+      right: 5px; /* Sát thanh scroll */
+      top: 0;
+      width: 60px;
+      height: 60px;
+      background-image: url('https://d2bzx2vuetkzse.cloudfront.net/fit-in/0x450/unshoppable_producs/a6a3b4c9-b88b-4769-83cd-1bd3d070ee8a.webp');
+      background-size: cover;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+  /* Giới thiệu */
+    .oke {
+    position: relative;
+    height: calc(100vh - 120px);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .oke::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #f0f4f8 50%, #e6dada 50%);
+    z-index: 0;
+  }
+
+  .gioithieu {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 60px;
+    z-index: 1;
+  }
+
+  .title {
+    flex: 1;
+    text-align:justify;
+    padding-right: 40px;
+  }
+
+  .title h1 {
+    font-size: 64px;
+    font-weight: bold;
+    color:#000;
+  }
+  .doangt {color:#000; text-align: justify;}
+  .nvat {
+    flex-shrink: 0;
+    z-index: 2;
+    max-height: 500px;
+    margin: 0 40px;
+  }
+
+  .nvat img {
+    height: 100%;
+    max-height: 500px;
+    object-fit: contain;
+  }
+
+  .description {
+    flex: 1;
+    padding-left: 40px;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .bam-group {
+    margin-top: 20px;
+  }
+
+  .bam {
+    padding: 10px 20px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  /* phim nổi bật */
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color:black;
+  }
+  .films {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 24px;
+  }
+  .film {
+    background:#cadef3;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .film:hover {
+    transform: scale(1.05);
+  }
+  .film img {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+  .rounded-container {
+  background-color: white;
+  background-size: cover;
+  margin: 0 auto;
+  max-width: 1200px;
+  margin-bottom: 0px;
+  /* padding: 60px 10%; */
+}
+
+  .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 24px;
+    background-color: #cadef3;
+    border-radius: 999px;
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  .btn:hover {
+    background-color:#89bbf3;
+  }
+  .world {
+    color: rgb(15, 14, 14);
+    text-align: center;
+  }
+  .world p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+  }
+
+
+  /* Cuộn nhân vật */
+  .title-overlay {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+
+  /* bóng đổ rõ hơn để nổi bật chữ */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+.nv {
+  margin: 0;
+  overflow: hidden;
+  transition: background-color 1.5s ease-in-out;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.nv::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('./bgsang.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1; /* Đảm bảo opacity ở đây là 1 */
+  transition: opacity 1.5s ease-in-out; /* Chuyển đổi mượt mà */
+  z-index: -1;
+}
+
+.nv.night::before {
+  background-image: url('./bgnight.jpg');
+  opacity: 1; /* Đảm bảo opacity = 1 khi có class night */
+}
+
+#carousel-container {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#sun, #moon {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
+  transition: transform 0.5s ease, opacity 0.5s ease, left 0.5s ease, top 0.5s ease;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#sun {
+  background-image: url('https://png.pngtree.com/png-clipart/20230315/ourmid/pngtree-sun-cartoon-cute-doodle-summer-png-image_6646856.png');
+}
+
+#moon {
+  background-image: url('https://free.vector6.com/wp-content/uploads/2021/05/PNG-0000001994-png-hanh-tinh-vu-tru.png');
+}
+
+#carousel {
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+  max-width: 720px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.carousel-item.active {
+  height: 240px; /* cao hơn 1 chút */
+}
+
+.carousel-item {
+  width: 200px;
+  height: 250px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  opacity: 0.7;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.carousel-item.center {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.4s ease;
+}
+
+.carousel-item:hover img {
+  transform: scale(1.05);
+}
+
+.carousel-item p {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  transition: color 0.5s ease;
+}
+
+#prev-btn, #next-btn {
+  background: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 24px;
+  padding: 12px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 10;
+  position: relative;
+}
+
+#prev-btn:hover, #next-btn:hover {
+  background: rgba(255,255,255,0.9);
+}
+
+/* Sản phẩm */
+    .section {
+      margin-top: 0px;
+      margin-bottom: 60px;
+      padding: 0px 20px;
+    }
+  
+    .carousel-containerok {
+      position: relative;
+      overflow: visible;
+      scroll-behavior: smooth;
+      gap: 16px;
+      padding: 5px;
+    }
+  
+    .carousel {
+      display: flex;
+      overflow-y: auto;
+      overflow-x: visible;
+      scroll-behavior: smooth;
+      gap: 20px;
+      margin: 20px;
+    }
+  
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .card {
+      background-color: white;
+      min-width: 200px;
+      max-width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+  
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+
+    .card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  
+    .card a {
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      color: #000;
+      font-weight: bold;
+    }
+  
+    .price {
+      font-style: italic;
+      color: red;
+      font-size: 12px;
+    }
+  
+    .arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: white;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+  
+    .arrow-left {
+      left: 20px;
+    }
+  
+    .arrow-right {
+      right: 20px;
+    }
+    /* Login */
+    #loginModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+        background: #ffffff;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);      
+        padding: 30px;
+        border-radius: 15px;
+        width: 410px;
+      min-height: 400px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.4s ease;
+      
+    }
+
+    .login-box img {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .login-box h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+    .signin-btn {display: inline-block;
+        background-color: #f06258;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 15px;
+        font-weight: bold;
+        margin-bottom: 20px;}
+    .signin-btn:hover {
+        background-color: #f4c9c9;
+        text-decoration: none;
+    }
+    .registerd{color:#565454;text-decoration: none;}
+    .registerd + a {
+        text-decoration: underline;
+    color: #f06258; }
+    .login-box p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    /* .login-box a {
+      text-decoration: none;
+      text-decoration: underline;
+    } */
+
+    .login-box a:hover {
+      text-decoration: underline;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      padding: 5px;    
+    }
+
+    .close-btn:hover {
+      color: #333;
+    }
+    .register-link {
+        margin-left: 10px;
+        text-decoration: underline;
+color: #f06258;
+    }
+
+    /* .registerd {
+      font-style: italic; 
+      font-weight: bold; 
+    } */
+    @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- Cloud Layer -->
+<img src="https://free.vector6.com/wp-content/uploads/2021/03/freepng1226-dam-may-may-troi-may-troi-may-trang-png-hinh-tach-nen-16.png" class="cloud" alt="cloud">
+<img src="https://free.vector6.com/wp-content/uploads/2021/03/freepng1295-dam-may-may-troi-may-troi-may-trang-png-hinh-tach-nen-85.png" class="cloud" alt="cloud">
+<img src="https://free.vector6.com/wp-content/uploads/2021/03/freepng1371-dam-may-may-troi-may-troi-may-trang-png-hinh-tach-nen-161.png" class="cloud" alt="cloud">
+
+<!-- Phần background hình -->
+<div class="hero-background"> 
+<!-- Header -->
+<script>
+  window.addEventListener("scroll", function () {
+    const header = document.querySelector("header");
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+</script>
+<header>
+    <div class="ghibli-wrap">
+    <img class="logo" src="./header/Layer 1.png">
+    <div class="ghibli-box">
+        <p class="studio">Studio</p>
+        <h1 class="ghibli">Ghibli</h1>
+        <p class="jp">スタジオジブリ</p>
+      </div>
+    </div>
+  <nav>
+    <ul>
+      <li><a href="./Aboutusfinal.html/">About Us</a></li>
+      <li><a href="./filmography_html/filmography.html">Filmography</a></li>
+      <li><a href="./SHOP (1)/thushop.html">Shop</a></li>
+      <li><a href="./Blogfinal.html/">Blog</a></li>
+      <li><a href="./FAQ/cauhoi.html">FAQs</a></li>
+      <li><a href="./Career page/career page.html">Careers</a></li>
+      <li><a href="./SHOP (1)/contactus.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="icons">
+    <i class="fas fa-search"></i>
+    <input type="text" class="search-box" placeholder="Search..." />
+  <div class="cart-icon"> 
+    <a href="./giohang.html" style="color: white;">
+    <i class="fas fa-shopping-cart"></i></a>
+    <span class="cart-count" id="cart-count">0</span>
+  </div>
+  <script>
+    window.onload = function() {
+      let count = parseInt(localStorage.getItem("cartCount")) || 0;
+      document.getElementById("cart-count").textContent = count;
+    }
+    </script>
+
+  <!-- Login -->
+  <a style="color: white;" id="openLogin"><i onclick="openLoginModal()"  class="fas fa-user"></i></a>
+
+  <!-- Login Modal -->
+  <div id="loginModal" onclick="if(event.target.id==='loginModal'){ closeLoginModal(); }">
+    <div class="login-box">
+        <img src="./login_logout/logo2.png" alt="Studio Ghibli Logo">
+        <h3>Sign In to your Studio Ghibli Account</h3>
+        <a href="./login_logout/signin.html" class="signin-btn">Sign In</a>
+        <p>
+            <span class="registerd">Don't have an account?</span>
+            <a href="./login_logout/register.html" class="register-link">Register</a>
+        </p>
+        <button class="close-btn" onclick="closeLoginModal()" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+    </div>
+  </div>
+
+  <script>
+    function openLoginModal() {
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+
+    function closeLoginModal() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+  </script>
+</header>
+
+<!-- Main Content -->
+<div class="main-content">
+    <h1>Welcome to the world of Ghibli</h1>
+    <p>Studio Ghibli là một thế giới nhiệm màu - nơi cảm xúc, thiên nhiên và trí tưởng tượng hòa quyện lại thành những câu chuyện bất tử. Tại đây, bạn sẽ gặp những sinh vật kỳ lạ, những thị trấn ẩn mình trong rừng, những cô bé dũng cảm và các vị thần gió lặng lẽ.</p>
+    <p>Hãy cùng chúng tôi đắm mình trong những câu chuyện vượt thời gian. Hãy để gió cuốn bạn bay đến vùng đất của Ghibli, nơi mọi giới hạn đều trở nên mờ nhạt, và nơi trái tim bạn sẽ luôn cảm thấy được chữa lành.</p>
+    <a href="" class="pill-btn">Khám phá ngay</a>
+</div>
+</div>
+
+<!-- Totoro Chat -->
+ <button id="chat-btn"></button>
+ <div id="chat-box">
+   <div id="chat-header">Totoro Chatbox 🌱</div>
+   <div id="chat-body"></div>
+   <div id="chat-input">
+     <button id="emoji-btn">😊</button>
+     <input type="text" id="message-input" placeholder="Type your message..." />
+     <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+   </div>
+ </div>
+ <script>
+  const chatBtn = document.getElementById('chat-btn');
+  const chatBox = document.getElementById('chat-box');
+  const sendBtn = document.getElementById('send-btn');
+  const chatBody = document.getElementById('chat-body');
+  const messageInput = document.getElementById('message-input');
+  const emojiBtn = document.getElementById('emoji-btn');
+
+  chatBtn.onclick = () => {
+    chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+  };
+
+  function appendMessage(text, sender) {
+    const msg = document.createElement('div');
+    msg.className = 'message ' + sender;
+    msg.textContent = text;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  sendBtn.onclick = () => {
+    const text = messageInput.value.trim();
+    if (text) {
+      appendMessage(text, 'user');
+      setTimeout(() => appendMessage("Totoro is thinking... 🌧️", 'totoro'), 500);
+      messageInput.value = '';
+    }
+  };
+
+  emojiBtn.onclick = () => {
+    const emojis = ["😊","🌸","😢","🎵","🍃","✨","💖","😄"];
+    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+    messageInput.value += emoji;
+  };
+</script>
+<!-- Thanh Cuộn -->
+<div class="pet" id="pet"></div>
+
+<script>
+  const pet = document.getElementById("pet");
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight;
+    const winHeight = window.innerHeight;
+    const scrollPercent = scrollTop / (docHeight - winHeight);
+
+    const petMaxMove = winHeight - 60; // Chiều cao màn hình trừ chiều cao con vật
+    const petTop = scrollPercent * petMaxMove;
+
+    pet.style.top = `${petTop}px`;
+  });
+</script>
+
+<!-- Giới thiệu studio -->
+<section class="oke">
+  <div class="gioithieu">
+    <div class="title">
+      <h1>Studio Ghibli</h1>
+      <p class="doangt" style="margin-top: 20px; font-size: 18px; line-height: 1.6; color: #444;">
+        Nơi những điều kỳ diệu nảy mầm từ trí tưởng tượng, nơi cơn gió mùa hè chở theo những linh hồn lang thang, và nơi tuổi thơ được cất giữ trong từng nét vẽ.  
+        Studio Ghibli không chỉ làm phim - họ thổi hồn vào thế giới mộng mơ.
+      </p>
+    </div>
+    
+    <div class="nvat">
+      <img src="https://wallpapers.com/images/hd/chihiro-running-spirited-away-oxnhn6uhoz2piitb.jpg" alt="Chihiro Character" />
+    </div>
+
+    <div class="description">
+      <p class="doangt">
+        Studio Ghibli là một hãng phim hoạt hình Nhật Bản nổi tiếng toàn cầu, được thành lập bởi Hayao Miyazaki và Isao Takahata. 
+        Các bộ phim của Ghibli nổi bật với phong cách nghệ thuật độc đáo, cốt truyện sâu sắc, và thông điệp nhân văn. 
+        Những tác phẩm như Spirited Away, My Neighbor Totoro và Princess Mononoke đã trở thành biểu tượng văn hóa và truyền cảm hứng cho nhiều thế hệ.
+      </p>
+      <div class="bam-group">
+        <a href="./filmography_html/filmography.html">
+        <button class="bam">Explore Movies</button></a>
+      <a href="./Aboutusfinal.html/index.html"></a> <button class="bam" style="background:#aaa;">About Us</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Nhân vật yêu thích -->
+<div class="nv"> 
+  <h2 class="title-overlay">Nhân vật nổi bật</h2>
+  <div id="sun"></div>
+  <div id="moon"></div>
+
+  <div id="carousel-container">
+    <button id="prev-btn">&lt;</button>
+    <div id="carousel"></div>
+    <button id="next-btn">&gt;</button>
+  </div>
+
+  <script>
+    const sun = document.getElementById("sun");
+    const moon = document.getElementById("moon");
+
+    let angle = 0;
+    const step = 30;
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    const radius = window.innerHeight / 2.8;
+
+    function update() {
+  const rad = angle * Math.PI / 180;
+
+  const sunX = centerX + radius * Math.cos(rad);
+  const sunY = centerY + radius * Math.sin(rad);
+  sun.style.left = `${sunX}px`;
+  sun.style.top = `${sunY}px`;
+  sun.style.opacity = sunY < centerY ? 1 : 0;
+
+  const moonRad = rad + Math.PI;
+  const moonX = centerX + radius * Math.cos(moonRad);
+  const moonY = centerY + radius * Math.sin(moonRad);
+  moon.style.left = `${moonX}px`;
+  moon.style.top = `${moonY}px`;
+  moon.style.opacity = moonY < centerY ? 1 : 0;
+
+  // Smooth background transition
+  const nvElement = document.querySelector('.nv'); // Sửa lại từ document.nv
+  if (sunY < centerY) {
+    nvElement.classList.remove("night");
+  } else {
+    nvElement.classList.add("night");
+  }
+}
+    const images = [
+      {src: "https://www.pngkey.com/png/full/39-397461_miyazaki-drawing-sketchbook-stock-spirited-away-haku-dragon.png", name: "Haku"},
+      {src: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5f0018a2-8560-4f86-b6ed-ce255489220d/dgeu5vk-69c62e9b-22b9-4cfa-9857-986f6e5d367a.png/v1/fill/w_1280,h_692/chihiro_ogino___spirited_away_png_free__by_xanccount_dgeu5vk-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjkyIiwicGF0aCI6IlwvZlwvNWYwMDE4YTItODU2MC00Zjg2LWI2ZWQtY2UyNTU0ODkyMjBkXC9kZ2V1NXZrLTY5YzYyZTliLTIyYjktNGNmYS05ODU3LTk4NmY2ZTVkMzY3YS5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.yPS0WWliXSuLUIKPfRFdNgjE0u-jHV9ufWZrC0PC9p8", name: "Chihiro Ogino"},
+      {src: "https://s2-ug.ap4r.com/image-aigc-article/seoPic/origin/ec5884d3e0c06e453b362bb735832a202e04c3fc.png", name: "Calcifer"},
+      {src: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1b82ba2b-aff7-44e6-9afe-a57a5c42014d/dg6hk92-9640a058-cd59-426a-b068-5ec1f2cedc20.png/v1/fill/w_1280,h_833/kiki_render_by_kingevan210_dg6hk92-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODMzIiwicGF0aCI6IlwvZlwvMWI4MmJhMmItYWZmNy00NGU2LTlhZmUtYTU3YTVjNDIwMTRkXC9kZzZoazkyLTk2NDBhMDU4LWNkNTktNDI2YS1iMDY4LTVlYzFmMmNlZGMyMC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.qGTfAqaOkmuIs6hqOMFrS6mdXs_e9Xs-ft9mC-zCaB0", name: "Kiki"},
+      // {src: "https://www.pngmart.com/files/23/No-Face-PNG.png", name: "No Face"}
+    ];
+
+    let current = 0;
+
+    function renderCarousel() {
+      const carousel = document.getElementById("carousel");
+      carousel.innerHTML = "";
+
+      const total = images.length;
+      for (let i = -1; i <= 1; i++) {
+        const index = (current + i + total) % total;
+        const div = document.createElement("div");
+        div.className = "carousel-item" + (i === 0 ? " center" : "");
+        div.innerHTML = `
+          <img src="${images[index].src}" alt="img${index}" />
+          <p>${images[index].name}</p>
+        `;
+        carousel.appendChild(div);
+      }
+    }
+
+    document.getElementById("prev-btn").addEventListener("click", () => {
+      current = (current - 1 + images.length) % images.length;
+      angle = (angle - step + 360) % 360;
+      renderCarousel();
+      update();
+    });
+
+    document.getElementById("next-btn").addEventListener("click", () => {
+      current = (current + 1) % images.length;
+      angle = (angle + step) % 360;
+      renderCarousel();
+      update();
+    });
+
+    renderCarousel();
+    update();
+    // Cho phép sử dụng bàn phím
+    document.addEventListener("keydown", function(event) {
+  if (event.key === "ArrowLeft") {
+    document.getElementById("prev-btn").click();
+  } else if (event.key === "ArrowRight") {
+    document.getElementById("next-btn").click();
+  }
+});
+
+  </script>
+</div>
+
+   <!-- Section: Phim nổi bật -->
+  <section id="featured-films">
+    <div class="rounded-container">
+      <h2>🎬 Phim nổi bật</h2>
+      <div class="films">
+        <div class="film">
+          <img src="https://images.plex.tv/photo?size=large-1280&url=https%3A%2F%2Fmetadata-static.plex.tv%2F7%2Fgracenote%2F788e591217d4be0ec3c4c42555279cb6.jpg" alt="Howl's Moving Castle" />
+          <p style="color: #000;"> <b>Howl's Moving Castle <br> (2004)</b></p>
+        </div>
+        <!-- Các phim khác... -->
+        <div class="film">
+          <img src="https://m.media-amazon.com/images/M/MV5BYWM3MDE3YjEtMzIzZC00ODE5LTgxNTItNmUyMTBkM2M2NmNiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="My Neighbor Totoro" />
+          <p style="color: #000;"><b>My Neighbor Totoro <br> (1988)</b></p>
+        </div>
+        <div class="film">
+          <img src="https://m.media-amazon.com/images/M/MV5BNTEyNmEwOWUtYzkyOC00ZTQ4LTllZmUtMjk0Y2YwOGUzYjRiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Spirited Away" />
+          <p style="color: #000;"><b>Spirited Away<br> (2001)</b></p>
+        </div>
+        <div class="film">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5GxpQ-nduWXrYcwT6wy9ESSeb9JegXR8JLzA6wxPsSmD6HezZEW9bNCQwv-pJH075jGSbOTRbG5k9mkFgzHBuPvfmuq2biONCASfY1VLkev7CM-rFKW9iGjsU9VqJCETabsxdHQtq_o0/s1600/arrietty-posterAU.jpg" alt="" />
+          <p style="color: #000;"><b>Arrietty <br> (2010)</b></p>
+        </div>
+        <div class="film">
+          <img src="https://simg.zalopay.com.vn/zlp-website/assets/studio_ghibli_cac_phim_da_san_xuat_8_a179435435.jpg" alt="" />
+          <p style="color: #000;"><b>The Wind Rises <br> (2013)</b></p>
+        </div>
+        
+      </div>
+      <a href="./filmography_html/filmography.html" class="btn">Xem thêm</a>
+    </div>
+  </section>
+    <!-- Sản phẩm đang bán -->
+  <div class="sp"> 
+  <h2><br><br>🛒 Sản phẩm</h2>
+  <div class="section">
+  <div class="carousel-containerok">
+    <button class="arrow-btn arrow-left" onclick="scrollCarousel(-1)">&#10094;</button>
+    <div class="carousel" id="dvdCarousel">
+      <!-- Card lặp lại -->
+      <div class="card"><a href="./SHOP (1)/productdetail.HTML"><img src="./SHOP (1)/dvd1.PNG" alt="">Spirited Away<br> <span class="price"> 150.000 VND </span> </a></div>
+      <div class="card"><a href="product-detail.html"><img src="./SHOP (1)/cb1.jpg" alt="">Spirited Away<br> <span class="price"> 150.000 VND </span> </a></div>
+      <div class="card"><a href="product-detail.html"><img src="./SHOP (1)/dvd2.PNG" alt="DVD 2">My Neighbor Totoro <br> <span class="price"> 170.000 VND </span> </a></div>
+      <div class="card"><a href="product-detail.html"><img src="./SHOP (1)/dvd2.PNG" alt="DVD 2">My Neighbor Totoro <br> <span class="price"> 170.000 VND </span> </a></div>
+      <div class="card"><a href="product-detail.html"><img src="./SHOP (1)/dvd5.PNG" alt="DVD 5">From Up On Poppy Hill <br> <span class="price"> 150.000 VND </span> </a></div>
+      <div class="card"><a href="product-detail.html"><img src="./SHOP (1)/dvd6.PNG" alt="DVD 6">Kiki's Delivery Service <br> <span class="price"> 150.000 VND </span> </a></div>
+      <div class="card"><a href="product-detail.html"><img src="./SHOP (1)/dvd5.PNG" alt="DVD 5">From Up On Poppy Hill <br> <span class="price"> 150.000 VND </span> </a></div>
+      <div class="card"><a href="product-detail.html"><img src="./SHOP (1)/dvd3.PNG" alt="DVD 3">Earwig and the Witch <br> <span class="price"> 150.000 VND </span> </a></div>
+      <div class="card"><a href="product-detail.html"><img src="./SHOP (1)/dvd7.PNG" alt="DVD 7">Ponyo <br> <span class="price"> 150.000 VND </span> </a></div>
+      <div class="card"><a href="product-detail.html"><img src="./SHOP (1)/dvd8.PNG" alt="DVD 8">Castle in the Sky <br> <span class="price"> 150.000 VND </span> </a></div>
+      <div class="card"><a href="product-detail.html"><img src="./SHOP (1)/dvd9.PNG" alt="DVD 9">The Boy and the Heron <br> <span class="price"> 150.000 VND </span> </a></div>
+
+    </div>
+    <button class="arrow-btn arrow-right" onclick="scrollCarousel(1)">&#10095;</button>
+  </div>
+  </div>
+</div>
+  <script>
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById('dvdCarousel');
+      const scrollAmount = 220;
+      carousel.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+
+ 
+<!-- footer -->
+ <footer style="background: #222; color: #fff; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 20px;">
+    <img src="https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png" alt="Totoro Icon" style="width: 60px; margin-bottom: 10px;">
+    <h2 style="font-family: 'Georgia', serif; margin: 0 0 10px; color: white;">Studio Ghibli</h2>
+    <p style="max-width: 500px; font-size: 14px; line-height: 1.6; color: #ccc;">
+      “Once you've met someone, you never really forget them. It just takes a while for your memories to return.”<br>
+      — *Spirited Away* — 
+    </p>
+    <div style="margin: 20px 0;">
+      <a href="#" style="color: #ccc; margin: 0 10px; text-decoration: none;">About Us</a>
+      <a href="#" style="color: #ccc; margin: 0 10px; text-decoration: none;">Filmography</a>
+      <a href="#" style="color: #ccc; margin: 0 10px; text-decoration: none;">Shop</a>
+      <a href="#" style="color: #ccc; margin: 0 10px; text-decoration: none;">Blog</a>
+      <a href="#" style="color: #ccc; margin: 0 10px; text-decoration: none;">Contact</a>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <a href="https://www.facebook.com/phuongmaik5"><i class="fab fa-facebook" style="color: #ccc; margin: 0 8px;"></i></a>
+      <a href="https://www.instagram.com/pmicee_05_hehe?igsh=MXZwamx6M2NsNHhtMw=="><i class="fab fa-instagram" style="color: #ccc; margin: 0 8px;"></i></a>
+      <a href="https://www.tiktok.com/@pm212k5?_t=ZS-8ttpPJm1fCm&_r=1"><i class="fab fa-tiktok" style="color: #ccc; margin: 0 8px;"></i></a>
+    </div>
+    <p style="font-size: 12px; color: #888;">© 2025 Studio Ghibli. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

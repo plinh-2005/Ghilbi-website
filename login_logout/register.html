@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng ký | The Studio Ghibli</title>
+  <style>
+    .naba {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 20px; /* thêm padding-left */
+        background-color: rgb(82, 24, 24);
+        color: #ffffff;
+        text-align:left;
+        z-index: 2;
+        font-size: 0.95rem;
+    }
+    .naba a {
+      color: #ff84a5;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .naba a:hover {
+      text-decoration: underline;
+      color: #ffbc12;
+    }
+
+    .naba span {
+      color: #ffffff;
+      font-style: italic;
+    }
+    /* Background mờ */
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('./7.png') center / cover no-repeat;
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      color: #333;
+      position: relative;
+    }
+
+    .logo {
+      text-align: center;
+      margin-top: 60px;
+      z-index: 1;
+    }
+
+    .logo img {
+      margin-top: 5px;
+      width: 250px;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #790d05;
+    }
+
+    /* Phần background nằm trong signin-container */
+    .signin-container {
+      background: rgba(255, 236, 236, 0.4); /* Nền mờ để không làm mất ảnh nền */
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      text-align: left;
+      /* border: 2px dashed #000000; */
+      position: relative;
+      z-index: 2; /* Đảm bảo signin container nằm trên ảnh nền */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    .required-star {
+      color: red;
+    }
+
+    .input-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #000000;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s;
+      max-width: 400px;
+      background-color: #ffffff;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .input-wrapper input:focus {
+      border-color: #000000;
+      outline: none;
+      box-shadow: 0 0 4px #000000;
+    }
+
+    .register-btn {
+      width: 100%;
+      max-width: 400px;
+      padding: 12px;
+      background-color: #962d2d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+
+    .register-btn:hover {
+      background-color: #f07d80;
+    }
+
+    .form-options {
+      font-size: 0.9rem;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .form-options a {
+      color: #336a1d;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .form-options a:hover {
+      text-decoration: underline;
+    }
+    .Happy{
+        color: rgb(142, 18, 18);
+        font-weight:lighter;
+        font-style: italic;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: larger;
+    }
+  </style>
+</head>
+<body>
+    <div class="naba">
+        <a href="../home.html">Studio Ghibli</a> &lt;
+        <a href="signin.html">Đăng nhập</a> &lt;
+        <span>Quên mật khẩu</span>
+    </div>
+
+    <!-- Overlay ảnh nền mờ -->
+    <div class="background-overlay"></div>
+
+    <!-- Logo Brand -->
+    <div class="logo">
+        <img src="./logo2.png" alt="Brand Logo">
+    </div>
+
+    <!-- Title -->
+    <div class="title">
+        Create your Studio Ghibli account
+    </div>
+
+    <!-- Sign In Container -->
+    <div class="signin-container">
+      <div class="form-group">
+        <label for="firstName">Tên <span class="required-star">*</span></label>
+        <div class="input-wrapper">
+          <input type="text" id="firstName" name="firstName" placeholder="Mai" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Họ <span class="required-star">*</span></label>
+        <div class="input-wrapper">
+          <input type="text" id="lastName" name="lastName" placeholder="Nguyễn" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email <span class="required-star">*</span></label>
+        <div class="input-wrapper">
+          <input type="email" id="email" name="email" placeholder="abc@gmail.com" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mật khẩu <span class="required-star">*</span></label>
+        <div class="input-wrapper">
+          <input type="password" id="password" name="password" placeholder="abcdxyz" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Nhập lại Mật khẩu <span class="required-star">*</span></label>
+        <div class="input-wrapper">
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="abcdxyz" required>
+        </div>
+      </div>
+
+      <button class="register-btn" onclick="handleRegister()">Đăng ký</button>
+
+      <div class="form-options">
+        Bạn đã có tài khoản? <a href="./signin.html">Đăng nhập</a>
+      </div>
+    </div>
+    <div>
+        <p class="Happy">Chúc bạn mua sắm và xem phim vui vẻ!</p>
+    </div>
+
+    <script>
+      function handleRegister() {
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+        if (!firstName || !lastName || !email || !password || !confirmPassword) {
+          alert('Vui lòng điền vào tất cả các thông tin.');
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          alert('Mật khẩu không khớp.');
+          return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert('Địa chỉ email không hợp lệ.');
+          return;
+        }
+
+        alert('Đăng ký thành công!');
+        window.location.href = "signin.html";
+      }
+    </script>
+</body>
+</html>

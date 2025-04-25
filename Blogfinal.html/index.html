@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ghibli Blog</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="../header/Layer 1.png" type="image/png">
+</head>
+
+
+<style>
+    /* Reset & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background: url('./1.Back.jpeg') no-repeat center center/cover;
+    background-attachment: fixed;
+    color: #2e7d32;
+  }
+  
+  /* Header */
+  .blog-header {
+    text-align: center;
+    padding: 40px 15px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(2px);
+    color: #2e7d32;
+  }
+  
+  .blog-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .blog-header p {
+    font-size: 1.2rem;
+  }
+  
+  /* Blog Container */
+  .blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;
+  }
+  
+  /* Blog Card */
+  .blog-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 320px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 128, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(46, 125, 50, 0.4);
+  }
+  
+  .blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .blog-content {
+    padding: 20px;
+  }
+  
+  .blog-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: #1b5e20;
+  }
+  
+  .date {
+    font-size: 0.9rem;
+    color: #666;
+    display: block;
+    margin-bottom: 12px;
+  }
+  
+  .blog-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 12px;
+  }
+  
+  .blog-content a {
+    text-decoration: none;
+    color: #2e7d32;
+    font-weight: bold;
+    transition: color 0.2s ease;
+  }
+  
+  .blog-content a:hover {
+    color: #66bb6a;
+  }
+   
+  .petal {
+    position: fixed;
+    top: -2rem;
+    color: pink;
+    z-index: 9999;
+    animation: fall linear infinite;
+    pointer-events: none;
+  }
+  .petal::before {
+    content: "❀";
+  }
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+
+
+  .cloud {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    width: 100px;
+    height: 60px;
+    opacity: 0.6;
+    z-index: 1;
+    animation: cloudMove 60s linear infinite;
+    filter: blur(1px);
+    box-shadow:
+      30px 10px 0 0 #ffffff,
+      60px 15px 0 0 #ffffff;
+    pointer-events: none;
+  }
+  
+  /* Tạo 3 cụm mây bay ngang */
+  .cloud1 {
+    top: 60px;
+    left: -200px;
+    animation-delay: 0s;
+  }
+  
+  .cloud2 {
+    top: 140px;
+    left: -300px;
+    width: 120px;
+    height: 70px;
+    animation-delay: 15s;
+  }
+  
+  .cloud3 {
+    top: 220px;
+    left: -400px;
+    width: 90px;
+    height: 55px;
+    animation-delay: 30s;
+  }
+  
+  @keyframes cloudMove {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(120vw);
+    }
+  }
+  
+  .sidebar {
+    margin-top: 3rem;
+    background: #e0f5dd;
+    border: 2px dashed #9ccc65;
+    padding: 1rem;
+    border-radius: 12px;
+    max-width: 300px;
+    animation: fadeInRight 1s ease;
+  }
+  
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: #2e7d32;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
+  /*fanart*/
+  
+  .fanart-section {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #e0f8e9;
+    border-radius: 12px;
+  }
+  
+  .fanart-section h2 {
+    font-size: 1.5rem;
+    color: #2e7d32;
+    margin-bottom: 1.5rem;
+  }
+  
+  .fanart-carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .fanart-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+    scrollbar-width: none;
+  }
+  .fanart-slider::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .fanart-item {
+    min-width: 200px;
+    flex-shrink: 0;
+    background-color: #ffffffdd;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1rem;
+    transition: transform 0.3s;
+  }
+  .fanart-item:hover {
+    transform: scale(1.05);
+  }
+  .fanart-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .fanart-item p {
+    margin-top: 0.5rem;
+    color: #4e944f;
+    font-style: italic;
+  }
+  
+  .nav-btn {
+    background-color: #c8e6c9;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    color: #2e7d32;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+  .nav-btn:hover {
+    background-color: #a5d6a7;
+  }
+  .left {
+    position: absolute;
+    left: 0;
+  }
+  .right {
+    position: absolute;
+    right: 0;
+  }
+  
+  /*guide fanart*/
+  
+  .upload-guide {
+    margin-top: 3rem;
+    background-color: #f4fff9;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #a5d6a7;
+    text-align: left;
+  }
+  
+  .upload-guide h2 {
+    text-align: center;
+    color: #2e7d32;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .upload-guide p {
+    text-align: center;
+    color: #4e944f;
+    margin-bottom: 1rem;
+  }
+  
+  .guide-steps ol {
+    padding-left: 1.2rem;
+    color: #333;
+  }
+  
+  .guide-steps li {
+    margin-bottom: 0.7rem;
+    line-height: 1.6;
+  }
+  
+  .guide-steps a {
+    color: #2e7d32;
+    text-decoration: underline;
+  }
+  
+  .guide-steps ul {
+    padding-left: 1.2rem;
+    margin-top: 0.3rem;
+    list-style: circle;
+  }
+  
+  .news-box {
+    background-color: #ffffffcc;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 1rem;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+  
+  .news-box h3 {
+    color: #2e7d32;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
+  .news-scroller {
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+  }
+  /* Nút đọc thêm */
+.load-more-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#loadMoreBtn {
+  background-color: #2e8b57;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#loadMoreBtn:hover {
+  background-color: #256b45;
+}
+
+/* Ẩn hiện thêm bài */
+.hidden {
+  display: none;
+}
+
+/* thêm hiệu ứng cho nút*/
+#loadMoreBtn {
+  background: linear-gradient(to right, #86efac, #4ade80);
+  color: #1e3a08;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#loadMoreBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(34, 197, 94, 0.4);
+}
+
+#loadMoreBtn:active {
+  transform: scale(0.97);
+}
+@keyframes glow {
+  0% { box-shadow: 0 0 8px #a7f3d0; }
+  50% { box-shadow: 0 0 16px #4ade80; }
+  100% { box-shadow: 0 0 8px #a7f3d0; }
+}
+
+#loadMoreBtn {
+  animation: glow 2.5s infinite;
+
+}
+
+/*header sos*/
+* {
+  box-sizing: border-box;
+}
+body {
+margin: 0;
+font-family: 'Segoe UI', sans-serif;
+color: white;
+overflow-x: hidden;
+background-color:none; /* hoặc nền tùy bé chọn cho phần còn lại */
+}
+
+/* ==== Header ==== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+background-color: #278e9c; /* xanh pastel dịu nè 🌿 */
+}
+
+/* chữ logo */
+.ghibli-wrap {
+display: flex;
+align-items: center;
+gap: 16px; /* khoảng cách giữa logo và chữ */
+}
+s
+.logo {
+width: auto;
+height: auto;
+}
+.ghibli-box {
+text-align: right;
+color: white;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Bóng mờ nhẹ */
+font-family: Arial, sans-serif;
+line-height: 1.1; /* Cho các dòng sát nhau */
+}
+.logo {
+height: 70px;
+margin-bottom: 0;
+}
+.studio {
+font-size: 16px;
+margin: 0;
+color: white;
+}
+
+.ghibli {
+font-size: 48px;
+font-weight: bold;
+margin: 0;
+}
+
+.jp {
+font-size: 16px;
+margin: 0;
+letter-spacing: 1px;
+}
+
+.studio {
+font-size: 16px;
+margin: 0;
+}
+
+.ghibli {
+font-size: 48px;
+font-weight: bold;
+margin: 0;
+}
+
+.jp {
+font-size: 16px;
+margin: 0;
+letter-spacing: 1px;
+}
+/* navigation bar */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+nav a:hover {
+  color: #ffc107;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #ffc107;
+  ;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icons i {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.search-box {
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+  /*Chat box*/
+
+/* ==== Totoro Chat Box ==== */
+    .chat-icon {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 60px;
+      background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+      background-size: cover;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .chat-box {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 300px;
+      background: white;
+      color: black;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 999;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    .chat-box header {
+      background: #4caf50;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .chat-box .messages {
+      padding: 15px;
+      height: 150px;
+      overflow-y: auto;
+    }
+
+    .chat-box input {
+      width: 100%;
+      border: none;
+      border-top: 1px solid #ccc;
+      padding: 10px;
+      outline: none;
+    }
+  
+    /* Chat button */
+    #chat-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border-radius: 50%;
+      border: none;
+      width: 60px;
+      height: 60px;
+      background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+      background-size: cover;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    /* Chat box */
+    #chat-box {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      background: #f7f7f7;
+      color: #333;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    #chat-header {
+      background: #8cc0a7;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #chat-body {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin: 5px 0;
+      padding: 8px 10px;
+      border-radius: 10px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background: #dff0d8;
+      align-self: flex-end;
+    }
+
+    .totoro {
+      background: #cfe2f3;
+      align-self: flex-start;
+    }
+
+    #chat-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+      background: #eee;
+    }
+
+    #message-input {
+      flex: 1;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    #send-btn, #emoji-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    /*sub header*/
+    .sub-header {
+      background-color: rgba(255, 255, 255, 0.8); /* hoặc chọn nền phù hợp */
+      text-align: center;
+      padding: 50px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      backdrop-filter: blur(0.5px);
+    }
+    
+    .sub-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #2e3a59;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    
+    .sub-header p {
+      font-size: 1.2rem;
+      color: #4f596e;
+    }
+    
+</style>
+<body>
+  
+  
+    <!-- Header -->
+<header>
+  <a href="../home.html" style="text-decoration: none;"> <div class="ghibli-wrap">
+    <img class="logo" src="../header/Layer 1.png">
+    <div class="ghibli-box">
+        <p class="studio">Studio</p>
+        <h1 class="ghibli">Ghibli</h1>
+        <p class="jp">スタジオジブリ</p>
+      </div>
+    </div>
+  </a>
+<nav>
+  <ul>
+    <li><a href="./index.html">About Us</a></li>
+    <li><a href="../filmography_html/filmography.html">Filmography</a></li>
+    <li><a href="../SHOP (1)/thushop.html">Shop</a></li>
+    <li><a href="../Blogfinal.html/index.html">Blog</a></li>
+    <li><a href="../FAQ/cauhoi.html">FAQs</a></li>
+    <li><a href="../Career page/career page.html">Careers</a></li>
+    <li><a href="../SHOP (1)/contactus.html">Contact</a></li>
+  </ul>
+</nav>
+<div class="icons">
+  <i class="fas fa-search"></i>
+  <input type="text" class="search-box" placeholder="Search..." />
+  <a href="./giohang.html" style="color: white;">
+  <i class="fas fa-shopping-cart"></i>
+</a>
+  <i class="fas fa-user"></i>
+</div>
+<script>
+  window.addEventListener("scroll", function () {
+    const header = document.querySelector("header");
+    header.classList.toggle("scrolled", window.scrollY > 0);
+  });
+</script>
+
+</header>
+
+<!-- Sub-header for About Us -->
+<section class="sub-header">
+  <h1>Blog ✨</h1>
+  <p>Khám phá câu chuyện và giá trị đằng sau Studio Ghibli</p>
+</section>
+
+
+  <section class="blog-container">
+    <!-- Bài viết 1 -->
+    <div class="blog-card">
+      <img src="./1.Totoro.jpg" alt="Totoro" />
+      <div class="blog-content">
+        <h2>Totoro – Biểu tượng tuổi thơ bất diệt</h2>
+        <span class="date">Ngày đăng: 12/04/2025</span>
+        <p>Hành trình cùng Totoro mang đến ký ức ngọt ngào và đầy phép màu cho mọi thế hệ khán giả.</p>
+        <a href="post1.html">Đọc thêm →</a>
+
+      </div>
+  
+    </div>
+
+    <!-- Bài viết 2 -->
+    <div class="blog-card">
+      <img src="./2.Howl.webp" alt="Howl’s Moving Castle" />
+      <div class="blog-content">
+        <h2>Lâu đài bay của Howl và sự tự do diệu kỳ</h2>
+        <span class="date">Ngày đăng: 10/04/2025</span>
+        <p>Bộ phim là sự pha trộn giữa tình yêu, chiến tranh và lòng nhân đạo, tất cả dưới bàn tay ma thuật của Ghibli.</p>
+        <a href="post2.html">Đọc thêm →</a>
+
+      </div>
+    </div>
+
+    <!-- Bài viết 3 -->
+    <div class="blog-card">
+      <img src="./3.Spririted.jpg" alt="Spirited Away" />
+      <div class="blog-content">
+        <h2>Spirited Away – Cuộc hành trình tìm lại bản thân</h2>
+        <span class="date">Ngày đăng: 08/04/2025</span>
+        <p>Chihiro lạc vào thế giới linh hồn, nơi cô học cách trưởng thành qua từng thử thách đầy mê hoặc.</p>
+        <a href="post3.html">Đọc thêm →</a>
+
+      </div>
+</div>
+</section>
+
+<!-- Nút đọc thêm nằm ở giữa -->
+<div class="load-more-container">
+  <button id="loadMoreBtn">Đọc thêm </button>
+</div>
+
+<!-- Các bài viết mở rộng (ẩn) -->
+<section class="blog-container hidden" id="morePosts">
+  <div class="blog-card">
+    <img src="./4.Kiki.jpg" alt="Kiki" />
+    <div class="blog-content">
+      <h2>Kiki’s Delivery Service – Trưởng thành từ sự tự lập</h2>
+      <span class="date">Ngày đăng: 06/04/2025</span>
+      <p>Kiki và chiếc chổi bay của cô ấy đã truyền cảm hứng cho biết bao thế hệ thiếu niên đang lớn.</p>
+      <a href="post4.html">Đọc thêm →</a>
+    </div>
+  </div>
+
+  <div class="blog-card">
+    <img src="./5.Ponyo.jpg" alt="Ponyo" />
+    <div class="blog-content">
+      <h2>Ponyo – Thế giới cổ tích dưới đại dương</h2>
+      <span class="date">Ngày đăng: 04/04/2025</span>
+      <p>Một cô bé cá vàng và câu chuyện nhiệm màu về tình bạn, lòng tốt và gia đình.</p>
+      <a href="post5.html">Đọc thêm →</a>
+    </div>
+  </div>
+  
+  <div class="blog-card">
+    <img src="./6.Heron.jpg" alt="The Boy and the Heron" />
+    <div class="blog-content">
+      <h2>Thiếu niên và chim diệc – Hành trình trưởng thành giữa thế giới huyền ảo</h2>
+      <span class="date">Ngày đăng: 04/04/2025</span>
+      <p>Bộ phim kể về Mahito – cậu bé khám phá một thế giới kỳ ảo sau khi gặp một con chim diệc bí ẩn, nơi những ký ức, sự mất mát và lòng dũng cảm được thử thách.</p>
+      <a href="post6.html">Đọc thêm →</a>
+    </div>
+</div>
+
+</section>
+</div>
+
+
+<!-- Script xử lý -->
+<script>
+document.getElementById("loadMoreBtn").addEventListener("click", function () {
+  const morePosts = document.getElementById("morePosts");
+  morePosts.classList.toggle("hidden");
+  this.textContent = morePosts.classList.contains("hidden") ? "Đọc thêm " : "Ẩn bớt ";
+});
+</script>
+
+    
+    
+  
+
+  <script>
+    const numPetals = 30;
+    for (let i = 0; i < numPetals; i++) {
+      let petal = document.createElement("div");
+      petal.classList.add("petal");
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.animationDuration = 4 + Math.random() * 6 + "s";
+      petal.style.opacity = Math.random();
+      petal.style.fontSize = 12 + Math.random() * 12 + "px";
+      document.body.appendChild(petal);
+    }
+  </script>
+ 
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
+
+<section class="fanart-section">
+  <h2>🎨 Fanart từ cộng đồng</h2>
+  <div class="fanart-carousel-container">
+    <button class="nav-btn left" onclick="scrollFanart('left')">❮</button>
+    <div class="fanart-slider" id="fanartSlider">
+      <div class="fanart-item">
+        <img src="./13.clgt.jpg" alt="Fanart 1">
+        <p>@clgt</p>
+      </div>
+      <div class="fanart-item">
+        <img src="./7.Huy.jpg" alt="Fanart 2">
+        <p>@huyyyy</p>
+      </div>
+      <div class="fanart-item">
+        <img src="./8.Minh.jpg" alt="Fanart 3">
+        <p>@minhbangquang</p>
+      </div>
+      <div class="fanart-item">
+        <img src="./9.Phuc.jpg" alt="Fanart 4">
+        <p>@phuchocbai</p>
+      </div>
+      <div class="fanart-item">
+        <img src="./11.PhuongMice.jpg" alt="Fanart 5">
+        <p>@phuongmice</p>
+      </div>
+      <div class="fanart-item">
+        <img src="./10.MH.jpg" alt="Fanart 6">
+        <p>@tete_moazh</p>
+      </div>
+      <div class="fanart-item">
+        <img src="./12.Plinh.jpg" alt="Fanart 7">
+        <p>@nyn_lin</p>
+      </div>
+    </div>
+    <button class="nav-btn right" onclick="scrollFanart('right')">❯</button>
+  </div>
+</section>
+<script>
+  const fanartSlider = document.getElementById('fanartSlider');
+
+  function scrollFanart(direction) {
+    const scrollAmount = 250;
+    fanartSlider.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+
+  // Tự động lướt ngang mỗi 4 giây
+  setInterval(() => {
+    fanartSlider.scrollBy({
+      left: 250,
+      behavior: 'smooth'
+    });
+  }, 4000);
+</script>
+
+
+<section class="upload-guide">
+  <h2>🌟 Gửi Fanart của bạn đến Ghibli Blog!</h2>
+  <p>Chúng mình rất vui khi được chia sẻ những tác phẩm của bạn đến cộng đồng yêu Ghibli 💚</p>
+
+  <div class="guide-steps">
+    <ol>
+      <li><strong>Bước 1:</strong> Chuẩn bị fanart của bạn (file ảnh .jpg hoặc .png).</li>
+      <li><strong>Bước 2:</strong> Gửi email đến <a href="mailto:ghiblifanart@gmail.com">ghiblifanart@gmail.com</a> với:
+        <ul>
+          <li>Tiêu đề email: <em>Gửi Fanart - [Tên của bạn]</em></li>
+          <li>Nội dung: Một đoạn giới thiệu ngắn về bản thân/tác phẩm.</li>
+          <li>Đính kèm file fanart (kèm link mạng xã hội nếu muốn được credit).</li>
+        </ul>
+      </li>
+      <li><strong>Bước 3:</strong> Đợi xác nhận từ team — và chờ fanart bạn xuất hiện trên blog nhé!</li>
+    </ol>
+  </div>
+</section>
+
+
+
+
+<!-- Totoro Chat -->
+<button id="chat-btn"></button>
+<div id="chat-box">
+  <div id="chat-header">Totoro Chatbox 🌱</div>
+  <div id="chat-body"></div>
+  <div id="chat-input">
+    <button id="emoji-btn">😊</button>
+    <input type="text" id="message-input" placeholder="Type your message..." />
+    <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+<script>
+ const chatBtn = document.getElementById('chat-btn');
+ const chatBox = document.getElementById('chat-box');
+ const sendBtn = document.getElementById('send-btn');
+ const chatBody = document.getElementById('chat-body');
+ const messageInput = document.getElementById('message-input');
+ const emojiBtn = document.getElementById('emoji-btn');
+
+ chatBtn.onclick = () => {
+   chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+ };
+
+ function appendMessage(text, sender) {
+   const msg = document.createElement('div');
+   msg.className = 'message ' + sender;
+   msg.textContent = text;
+   chatBody.appendChild(msg);
+   chatBody.scrollTop = chatBody.scrollHeight;
+ }
+
+ sendBtn.onclick = () => {
+   const text = messageInput.value.trim();
+   if (text) {
+     appendMessage(text, 'user');
+     setTimeout(() => appendMessage("Totoro is thinking... 🌧️", 'totoro'), 500);
+     messageInput.value = '';
+   }
+ };
+
+ emojiBtn.onclick = () => {
+   const emojis = ["😊","🌸","😢","🎵","🍃","✨","💖","😄"];
+   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+   messageInput.value += emoji;
+ };
+</script>
+<!-- footer -->
+<footer style="background: #222; color: #fff; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 20px;">
+  <img src="https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png" alt="Totoro Icon" style="width: 60px; margin-bottom: 10px;">
+  <h2 style="font-family: 'Georgia', serif; margin: 0 0 10px; color: white;">Studio Ghibli</h2>
+  <p style="max-width: 500px; font-size: 14px; line-height: 1.6; color: #ccc;">
+    “Once you've met someone, you never really forget them. It just takes a while for your memories to return.”<br>
+    — *Spirited Away*—
+  </p>
+  <div style="margin: 20px 0;">
+    <a href="../Aboutusfinal.html/index.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">About Us</a>
+    <a href="../filmography_html/filmography.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Filmography</a>
+    <a href="../SHOP (1)/thushop.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Shop</a>
+    <a href="./index.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Blog</a>
+    <a href="../SHOP (1)/contactus.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Contact</a>
+  </div>
+  <div style="margin-bottom: 10px;">
+    <a href="https://www.facebook.com/phuongmaik5"><i class="fab fa-facebook" style="color: #ccc; margin: 0 8px;"></i></a>
+    <a href="https://www.instagram.com/pmicee_05_hehe?igsh=MXZwamx6M2NsNHhtMw=="><i class="fab fa-instagram" style="color: #ccc; margin: 0 8px;"></i></a>
+    <a href="https://www.tiktok.com/@pm212k5?_t=ZS-8ttpPJm1fCm&_r=1"><i class="fab fa-tiktok" style="color: #ccc; margin: 0 8px;"></i></a>
+  </div>
+  <p style="font-size: 12px; color: #888;">© 2025 Studio Ghibli. All rights reserved.</p>
+</footer>
+</main>
+
+</body>
+</html>

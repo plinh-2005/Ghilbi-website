@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Cơ hội nghề nghiệp tại Studio Ghibli</title>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+ <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Raleway:wght@700&display=swap" rel="stylesheet">
+ <meta charset="UTF-8">
+ <title>Studio Ghibli Inspired</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <link rel="icon" href="../header/Layer 1.png" type="image/png">
+ <style>
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+   body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow-x: hidden;
+  background-color:none; /* hoặc nền tùy bé chọn cho phần còn lại */
+}
+/* <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Cơ hội nghề nghiệp tại Studio Ghibli</title>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+ <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Raleway:wght@700&display=swap" rel="stylesheet">
+ <style> */
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+
+
+/* ==== Totoro Chat Box ==== */
+   .chat-icon {
+     position: fixed;
+     bottom: 30px;
+     right: 30px;
+     width: 65px;
+     height: 60px;
+     background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+     background-size: cover;
+     border-radius: 50%;
+     cursor: pointer;
+     z-index: 1000;
+   }
+
+
+   .chat-box {
+     position: fixed;
+     bottom: 100px;
+     right: 30px;
+     width: 300px;
+     background: white;
+     color: black;
+     border-radius: 10px;
+     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+     display: none;
+     z-index: 999;
+     overflow: hidden;
+     font-size: 14px;
+   }
+
+
+   .chat-box header {
+     background: #4caf50;
+     color: white;
+     padding: 10px;
+     font-weight: bold;
+     text-align: center;
+   }
+
+
+   .chat-box .messages {
+     padding: 15px;
+     height: 150px;
+     overflow-y: auto;
+   }
+
+
+   .chat-box input {
+     width: 100%;
+     border: none;
+     border-top: 1px solid #ccc;
+     padding: 10px;
+     outline: none;
+   }
+    /* Chat button */
+   #chat-btn {
+     position: fixed;
+     bottom: 20px;
+     right: 20px;
+     border-radius: 50%;
+     border: none;
+     width: 60px;
+     height: 60px;
+     background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+     background-size: cover;
+     cursor: pointer;
+     z-index: 1000;
+   }
+
+
+   /* Chat box */
+   #chat-box {
+     position: fixed;
+     bottom: 90px;
+     right: 20px;
+     width: 300px;
+     max-height: 400px;
+     background: #f7f7f7;
+     color: #333;
+     border-radius: 15px;
+     box-shadow: 0 0 15px rgba(0,0,0,0.3);
+     display: none;
+     flex-direction: column;
+     overflow: hidden;
+     z-index: 999;
+   }
+
+
+   #chat-header {
+     background: #8cc0a7;
+     padding: 10px;
+     font-weight: bold;
+     text-align: center;
+   }
+
+
+   #chat-body {
+     flex: 1;
+     padding: 10px;
+     overflow-y: auto;
+   }
+
+
+   .message {
+     margin: 5px 0;
+     padding: 8px 10px;
+     border-radius: 10px;
+     max-width: 80%;
+     word-wrap: break-word;
+   }
+
+
+   .user {
+     background: #dff0d8;
+     align-self: flex-end;
+   }
+
+
+   .totoro {
+     background: #cfe2f3;
+     align-self: flex-start;
+   }
+
+
+   #chat-input {
+     display: flex;
+     padding: 10px;
+     border-top: 1px solid #ccc;
+     background: #eee;
+   }
+
+
+   #message-input {
+     flex: 1;
+     padding: 6px 10px;
+     border: none;
+     border-radius: 10px;
+     outline: none;
+   }
+
+
+   #send-btn, #emoji-btn {
+     background: none;
+     border: none;
+     font-size: 20px;
+     margin-left: 5px;
+     cursor: pointer;
+   }
+
+
+   header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 15px 40px;
+     position: sticky;
+     top: 0;
+     z-index: 999;
+ background-color: #278e9c; /* xanh pastel dịu nè 🌿 */
+   }
+
+
+   /* chữ logo */
+   .ghibli-wrap {
+ display: flex;
+ align-items: center;
+ gap: 16px; /* khoảng cách giữa logo và chữ */
+}
+s
+.logo {
+ width: auto;
+ height: auto;
+}
+ .ghibli-box {
+ text-align: right;
+ color: white;
+ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Bóng mờ nhẹ */
+ font-family: Arial, sans-serif;
+ line-height: 1.1; /* Cho các dòng sát nhau */
+}
+.logo {
+   height: 70px;
+   margin-bottom: 0;
+}
+.studio {
+ font-size: 16px;
+ margin: 0;
+ color: white;
+}
+
+
+.ghibli {
+ font-size: 48px;
+ font-weight: bold;
+ margin: 0;
+}
+
+
+.jp {
+ font-size: 16px;
+ margin: 0;
+ letter-spacing: 1px;
+}
+
+
+.studio {
+ font-size: 16px;
+ margin: 0;
+}
+
+
+.ghibli {
+ font-size: 48px;
+ font-weight: bold;
+ margin: 0;
+}
+
+
+.jp {
+ font-size: 16px;
+ margin: 0;
+ letter-spacing: 1px;
+}
+/* navigation bar */
+nav ul {
+     list-style: none;
+     display: flex;
+     gap: 20px;
+     margin: 0;
+     padding: 0;
+   }
+   nav a {
+     color: white;
+     text-decoration: none;
+     font-weight: 500;
+     position: relative;
+   }
+   nav a:hover {
+     color: #ffc107;
+   }
+   nav a::after {
+     content: '';
+     position: absolute;
+     width: 100%;
+     transform: scaleX(0);
+     height: 2px;
+     bottom: -4px;
+     left: 0;
+     background-color: #ffc107;
+     ;
+     transform-origin: bottom right;
+     transition: transform 0.25s ease-out;
+   }
+   nav a:hover::after {
+     transform: scaleX(1);
+     transform-origin: bottom left;
+   }
+
+
+   .icons {
+     display: flex;
+     align-items: center;
+     gap: 15px;
+   }
+
+
+   .icons i {
+     cursor: pointer;
+     font-size: 18px;
+   }
+
+
+   .search-box {
+     padding: 5px 10px;
+     border-radius: 20px;
+     border: none;
+     outline: none;
+   }
+
+
+/* ==== Totoro Chat Box ==== */
+   .chat-icon {
+     position: fixed;
+     bottom: 30px;
+     right: 30px;
+     width: 65px;
+     height: 60px;
+     background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+     background-size: cover;
+     border-radius: 50%;
+     cursor: pointer;
+     z-index: 1000;
+   }
+
+
+   .chat-box {
+     position: fixed;
+     bottom: 100px;
+     right: 30px;
+     width: 300px;
+     background: white;
+     color: black;
+     border-radius: 10px;
+     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+     display: none;
+     z-index: 999;
+     overflow: hidden;
+     font-size: 14px;
+   }
+
+
+   .chat-box header {
+     background: #4caf50;
+     color: white;
+     padding: 10px;
+     font-weight: bold;
+     text-align: center;
+   }
+
+
+   .chat-box .messages {
+     padding: 15px;
+     height: 150px;
+     overflow-y: auto;
+   }
+
+
+   .chat-box input {
+     width: 100%;
+     border: none;
+     border-top: 1px solid #ccc;
+     padding: 10px;
+     outline: none;
+   }
+    /* Chat button */
+   #chat-btn {
+     position: fixed;
+     bottom: 20px;
+     right: 20px;
+     border-radius: 50%;
+     border: none;
+     width: 60px;
+     height: 60px;
+     background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+     background-size: cover;
+     cursor: pointer;
+     z-index: 1000;
+   }
+
+
+   body {
+     font-family: 'Inter', sans-serif;
+     background: linear-gradient( 0deg, #bcf7ff, #72bcc6, #278e9c );
+     line-height: 1.6;
+   }
+
+
+
+
+   .logo img {
+     height: 80px;
+   }
+
+
+   nav ul {
+     list-style: none;
+     display: flex;
+     gap: 24px;
+   }
+
+
+   nav a {
+     text-decoration: none;
+     color: #ffffff;
+     font-weight: 600;
+     transition: color 0.3s;
+   }
+
+
+   .hero {
+     background-image: url('./Image/trangbia.png');
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     color: rgb(255, 255, 255);
+     padding: 320px 360px;
+     text-align: center;
+     height: 800px;
+     .hero-container { background-color: rgba(0, 0, 0, 0.616);
+     padding: 24px;
+   border-radius: 36px;}
+   }
+
+
+   .hero h1 {
+     font-size: 3rem;
+     margin-bottom: 16px;
+   }
+
+
+   .hero p {
+     font-size: 1.2rem;
+     max-width: 700px;
+     margin: 0 auto;
+     opacity: 0.9;
+    
+   }
+
+
+   .section {
+     padding: 60px 20px;
+     max-width: 1100px;
+     margin: 0 auto;
+   }
+
+
+   .section h2 {
+     font-size: 2rem;
+     color: #005b9f;
+     margin-bottom: 40px;
+     text-align: center;
+   }
+
+
+   /* FEATURE BLOCKS */
+   .features {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 30px;
+   }
+
+
+   .feature-box {
+     background: white;
+     padding: 30px;
+     border-radius: 16px;
+     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+     width: 300px;
+     text-align: center;
+     transition: transform 0.3s ease;
+   }
+
+
+   .feature-box:hover {
+     transform: translateY(-5px);
+   }
+
+
+   .feature-box img {
+     width: 200px;
+     height: 200px;
+     object-fit: contain;
+     margin-bottom: 16px;
+   }
+
+
+   .feature-box h3 {
+     color: #0070c9;
+     font-size: 1.2rem;
+     margin-bottom: 10px;
+   }
+
+
+   .feature-box p {
+     font-size: 0.95rem;
+     color: #333;
+   }
+
+
+   /* JOB LIST (NÂNG CẤP) */
+   .job-cards {
+     display: flex;
+     flex-direction: column;
+     gap: 24px;
+   }
+
+
+   .job-card {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     background: white;
+     border-radius: 12px;
+     padding: 20px 24px;
+     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+     transition: transform 0.2s ease;
+   }
+
+
+   .job-card:hover {
+     transform: translateY(-4px);
+   }
+
+
+   .job-info h3 {
+     font-size: 1.2rem;
+     color: #005b9f;
+     margin-bottom: 6px;
+   }
+
+
+   .job-info p {
+     font-size: 0.95rem;
+     color: #444;
+   }
+
+
+   .apply-btn {
+     background-color: #0070c9;
+     color: white;
+     text-decoration: none;
+     padding: 10px 18px;
+     font-weight: 600;
+     border-radius: 8px;
+     transition: background 0.3s ease;
+     white-space: nowrap;
+   }
+
+
+   .apply-btn:hover {
+     background-color: #005b9f;
+   }
+
+
+   /* FAQ */
+   .faq-item {
+     background-color: white;
+     margin: 10px 0;
+     border-radius: 8px;
+     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+   }
+
+
+   .faq-item summary {
+     cursor: pointer;
+     padding: 16px 20px;
+     font-weight: 600;
+     color: #0070c9;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+   }
+
+
+   .faq-item summary::after {
+     content: '+';
+     font-size: 1.2rem;
+     transition: transform 0.3s;
+   }
+
+
+   .faq-item details[open] summary::after {
+     content: '−';
+   }
+
+
+   .faq-item p {
+     padding: 0 20px 16px;
+     color: #444;
+   }
+
+
+
+
+   /* RESPONSIVE */
+   @media (max-width: 768px) {
+     .features {
+       flex-direction: column;
+       align-items: center;
+     }
+
+
+     .feature-box {
+       width: 90%;
+     }
+
+
+     .hero h1 {
+       font-size: 2rem;
+     }
+
+
+     .job-card {
+       flex-direction: column;
+       align-items: flex-start;
+       gap: 12px;
+     }
+
+
+     .apply-btn {
+       width: 100%;
+       text-align: center;
+     }
+   }
+ </style>
+</head>
+<header>
+  <a href="../home.html" style="text-decoration: none;"> <div class="ghibli-wrap">
+    <img class="logo" src="../header/Layer 1.png">
+    <div class="ghibli-box">
+        <p class="studio">Studio</p>
+        <h1 class="ghibli">Ghibli</h1>
+        <p class="jp">スタジオジブリ</p>
+      </div>
+    </div>
+  </a>
+<nav>
+ <ul>
+   <li><a href="../Aboutusfinal.html/index.html">About Us</a></li>
+   <li><a href="../filmography_html/filmography.html">Filmography</a></li>
+   <li><a href="../SHOP (1)/thushop.html">Shop</a></li>
+   <li><a href="../Blogfinal.html/index.html">Blog</a></li>
+   <li><a href="../FAQ/cauhoi.html">FAQs</a></li>
+   <li><a href="./career page.html">Careers</a></li>
+   <li><a href="../SHOP (1)/contactus.html">Contact</a></li>
+ </ul>
+</nav>
+<div class="icons">
+ <i class="fas fa-search"></i>
+ <input type="text" class="search-box" placeholder="Search..." />
+ <a href="./giohang.html" style="color: white;">
+ <i class="fas fa-shopping-cart"></i>
+</a>
+ <i class="fas fa-user"></i>
+</div>
+<script>
+ window.addEventListener("scroll", function () {
+   const header = document.querySelector("header");
+   header.classList.toggle("scrolled", window.scrollY > 0);
+ });
+</script>
+
+
+</header>
+
+
+ <!-- HERO -->
+ <section class="hero">
+   <div class="hero-container">
+     <h1>Khơi nguồn cảm hứng, viết nên huyền thoại</h1>
+     <p>Tại Studio Ghibli, sự sáng tạo là không giới hạn. Hãy cùng chúng tôi tạo nên những câu chuyện cảm hứng cho thế hệ mai sau.</p>
+
+
+   </div>
+  
+ </section>
+
+
+ <!-- FEATURE BLOCKS -->
+ <section class="section why-choose-us">
+   <h2>Tại sao chọn chúng tôi?</h2>
+   <div class="features">
+     <div class="feature-box">
+       <img src="./Image/kiki.png" alt="Văn hóa sáng tạo">
+       <h3>Văn hóa sáng tạo</h3>
+       <p>Chúng tôi tôn trọng ý tưởng và đóng góp của từng cá nhân trong đội ngũ.</p>
+     </div>
+     <div class="feature-box">
+       <img src="./Image/totoro.png" alt="Lịch trình linh hoạt">
+       <h3>Lịch trình linh hoạt</h3>
+       <p>Chúng tôi tin rằng cân bằng công việc – cuộc sống là chìa khóa thành công.</p>
+     </div>
+     <div class="feature-box">
+       <img src="./Image/luffy.png" alt="Ý nghĩa công việc">
+       <h3>Ý nghĩa công việc</h3>
+       <p>Bạn sẽ góp phần tạo nên những tác phẩm nghệ thuật truyền cảm hứng toàn cầu.</p>
+     </div>
+   </div>
+ </section>
+
+
+ <!-- JOB LIST (NÂNG CẤP) -->
+ <section class="section job-list">
+   <h2>Vị trí đang tuyển</h2>
+   <div class="job-cards">
+     <div class="job-card">
+       <div class="job-info">
+         <h3>🎨 Họa sĩ nhân vật 2D</h3>
+         <p>Thiết kế nhân vật sinh động, giàu cảm xúc cho các dự án phim hoạt hình.</p>
+       </div>
+       <a href="Ứng tuyển 1.html?position=Họa sĩ nhân vật 2D" class="apply-btn">Ứng tuyển</a>
+     </div>
+
+
+     <div class="job-card">
+       <div class="job-info">
+         <h3>📝 Biên kịch</h3>
+         <p>Xây dựng cốt truyện và lời thoại giàu chiều sâu, đậm chất Ghibli.</p>
+       </div>
+       <a href="Ứng tuyển 1.html?position=Biên kịch" class="apply-btn">Ứng tuyển</a>
+     </div>
+
+
+     <div class="job-card">
+       <div class="job-info">
+         <h3>🎬 Trợ lý sản xuất</h3>
+         <p>Hỗ trợ điều phối lịch trình, tài liệu và thông tin giữa các bộ phận.</p>
+       </div>
+       <a href="Ứng tuyển 1.html?position=Trợ lý sản xuất" class="apply-btn">Ứng tuyển</a>
+     </div>
+   </div>
+ </section>
+
+
+ <!-- FAQ -->
+ <section class="section">
+   <h2>Câu hỏi thường gặp</h2>
+   <div class="faq-item">
+     <details>
+       <summary>Quy trình ứng tuyển tại Studio Ghibli diễn ra như thế nào?</summary>
+       <p>Để ứng tuyển, bạn cần gửi CV và portfolio (nếu có) qua trang ứng tuyển trực tuyến của chúng tôi. Sau khi hồ sơ được xem xét, bạn sẽ nhận được email thông báo về vòng phỏng vấn hoặc bài kiểm tra chuyên môn tùy theo vị trí. Quy trình thường kéo dài từ 2-4 tuần.</p>
+     </details>
+   </div>
+   <div class="faq-item">
+     <details>
+       <summary>Studio Ghibli có hỗ trợ làm việc từ xa không?</summary>
+       <p>Chúng tôi cung cấp các lựa chọn làm việc linh hoạt, bao gồm làm việc từ xa hoặc kết hợp cho một số vị trí như biên kịch hoặc họa sĩ kỹ thuật số. Tuy nhiên, các vị trí như trợ lý sản xuất có thể yêu cầu làm việc tại studio để phối hợp trực tiếp.</p>
+     </details>
+   </div>
+   <div class="faq-item">
+     <details>
+       <summary>Phúc lợi dành cho nhân viên bao gồm những gì?</summary>
+       <p>Nhân viên tại Studio Ghibli được hưởng lịch làm việc linh hoạt, bảo hiểm y tế toàn diện, các khóa đào tạo chuyên môn, và cơ hội tham gia vào các dự án sáng tạo tầm cỡ quốc tế. Ngoài ra, chúng tôi còn có các chương trình chăm sóc sức khỏe tinh thần và không gian làm việc đầy cảm hứng.</p>
+     </details>
+   </div>
+   <div class="faq-item">
+     <details>
+       <summary>Tôi cần chuẩn bị gì cho portfolio khi ứng tuyển?</summary>
+       <p>Portfolio nên thể hiện rõ kỹ năng và phong cách sáng tạo của bạn, đặc biệt liên quan đến vị trí ứng tuyển. Ví dụ, họa sĩ cần gửi các bản vẽ nhân vật hoặc bối cảnh; biên kịch cần gửi kịch bản mẫu hoặc ý tưởng cốt truyện. Hãy đảm bảo portfolio được trình bày rõ ràng và chuyên nghiệp.</p>
+     </details>
+   </div>
+   <div class="faq-item">
+     <details>
+       <summary>Studio Ghibli có tuyển dụng thực tập sinh không?</summary>
+       <p>Hiện tại, chúng tôi có chương trình thực tập sinh giới hạn cho các sinh viên hoặc người mới vào nghề trong các lĩnh vực như hoạt hình, sản xuất, và biên kịch. Vui lòng theo dõi trang tuyển dụng của chúng tôi để cập nhật thông tin mới nhất.</p>
+     </details>
+   </div>
+ </section>
+
+
+ <!-- Totoro Chat -->
+<button id="chat-btn"></button>
+<div id="chat-box">
+  <div id="chat-header">Totoro Chatbox 🌱</div>
+  <div id="chat-body"></div>
+  <div id="chat-input">
+    <button id="emoji-btn">😊</button>
+    <input type="text" id="message-input" placeholder="Type your message..." />
+    <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+<script>
+ const chatBtn = document.getElementById('chat-btn');
+ const chatBox = document.getElementById('chat-box');
+ const sendBtn = document.getElementById('send-btn');
+ const chatBody = document.getElementById('chat-body');
+ const messageInput = document.getElementById('message-input');
+ const emojiBtn = document.getElementById('emoji-btn');
+
+
+ chatBtn.onclick = () => {
+   chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+ };
+
+
+ function appendMessage(text, sender) {
+   const msg = document.createElement('div');
+   msg.className = 'message ' + sender;
+   msg.textContent = text;
+   chatBody.appendChild(msg);
+   chatBody.scrollTop = chatBody.scrollHeight;
+ }
+
+
+ sendBtn.onclick = () => {
+   const text = messageInput.value.trim();
+   if (text) {
+     appendMessage(text, 'user');
+     setTimeout(() => appendMessage("Totoro is thinking... 🌧️", 'totoro'), 500);
+     messageInput.value = '';
+   }
+ };
+
+
+ emojiBtn.onclick = () => {
+   const emojis = ["😊","🌸","😢","🎵","🍃","✨","💖","😄"];  
+   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+   messageInput.value += emoji;
+ };
+</script>
+
+
+ <!-- FOOTER -->
+ <footer style="background: #222; color: #fff; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 20px;">
+   <img src="https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png" alt="Totoro Icon" style="width: 60px; margin-bottom: 10px;">
+   <h2 style="font-family: 'Georgia', serif; margin: 0 0 10px; color: white;">Studio Ghibli</h2>
+   <p style="max-width: 500px; font-size: 14px; line-height: 1.6; color: #ccc;">
+     “Once you've met someone, you never really forget them. It just takes a while for your memories to return.”<br>
+     — Spirited Away —
+   </p>
+   <div style="margin: 20px 0;">
+     <a href="../Aboutusfinal.html/index.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">About Us</a>
+     <a href="../filmography_html/filmography.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Filmography</a>
+     <a href="../SHOP (1)/thushop.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Shop</a>
+     <a href="../Blogfinal.html/index.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Blog</a>
+     <a href="../SHOP (1)/contactus.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Contact</a>
+   </div>
+   <div style="margin-bottom: 10px;">
+     <a href="https://www.facebook.com/phuongmaik5"><i class="fab fa-facebook" style="color: #ccc; margin: 0 8px;"></i></a>
+     <a href="https://www.instagram.com/pmicee_05_hehe?igsh=MXZwamx6M2NsNHhtMw=="><i class="fab fa-instagram" style="color: #ccc; margin: 0 8px;"></i></a>
+     <a href="https://www.tiktok.com/@pm212k5?_t=ZS-8ttpPJm1fCm&_r=1"><i class="fab fa-tiktok" style="color: #ccc; margin: 0 8px;"></i></a>
+   </div>
+   <p style="font-size: 12px; color: #888;">© 2025 Studio Ghibli. All rights reserved.</p>
+ </footer>
+
+
+ </body>
+</html>
+

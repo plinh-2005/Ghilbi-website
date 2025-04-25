@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sản phẩm - Ghibli Studio</title>
+  <link rel="icon" href="https://png.pngtree.com/png-clipart/20240329/original/pngtree-wheeled-shopping-cart-icon-vector-png-image_14711666.png" type="image/png">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    /* Header Giỏ hàng */
+    .cart-header {
+      text-align: right;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    /* Sản phẩm */
+    .product-wrapper {
+      max-width: 800px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .product-image {
+      flex: 1;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-details {
+      flex: 2;
+      padding-left: 20px;
+    }
+
+    .product-details h1 {
+      font-size: 28px;
+      color: #2c5f4a;
+      margin-bottom: 15px;
+    }
+
+    .product-details p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .product-details .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #f44336;
+      margin-bottom: 20px;
+    }
+
+    .add-to-cart-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #45a049;
+    }
+
+    .product-details .description {
+      font-size: 14px;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* Giỏ hàng */
+    .cart {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart h2 {
+      font-size: 24px;
+      color: #2c5f4a;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .cart-item .item-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .cart-item .item-price {
+      font-size: 16px;
+      color: #f44336;
+    }
+
+    .cart-footer {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 2px solid #f1f1f1;
+      margin-top: 20px;
+    }
+
+    .cart-footer .total {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2c5f4a;
+    }
+
+    .cart-footer .checkout-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    .cart-footer .checkout-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Giỏ hàng -->
+    <div class="cart-header">
+      <p>Giỏ hàng (0 sản phẩm)</p>
+    </div>
+
+    <div class="cart">
+      <h2>Giỏ hàng của bạn</h2>
+      <div id="cart-items"></div>
+
+      <div class="cart-footer">
+        <div class="total">Tổng: 0₫</div>
+        <button class="checkout-btn" disabled>Thanh toán</button>
+      </div>
+    </div>
+
+    <!-- Sản phẩm -->
+    <div class="product-wrapper">
+      <div class="product-image">
+        <img src="./SHOP (1)/ao1.PNG" alt="Totoro Figurine">
+      </div>
+
+      <div class="product-details">
+        <h1>Figurine Totoro</h1>
+        <p class="description">
+          Đây là mô hình Totoro dễ thương từ bộ phim nổi tiếng của Ghibli. Được làm từ chất liệu nhựa cao cấp, mỗi chi tiết đều được làm tỉ mỉ và tinh xảo.
+        </p>
+        <p class="price">250,000₫</p>
+        <button class="add-to-cart-btn" onclick="addToCart('Totoro Figurine', 250000)">Thêm vào giỏ hàng</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cart = [];
+    let cartCount = 0;
+
+    function addToCart(itemName, itemPrice) {
+      cart.push({ name: itemName, price: itemPrice });
+      cartCount++;
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItemsDiv = document.getElementById('cart-items');
+      const cartFooter = document.querySelector('.cart-footer');
+      const totalElement = cartFooter.querySelector('.total');
+      const checkoutButton = cartFooter.querySelector('.checkout-btn');
+
+      cartItemsDiv.innerHTML = ''; // Clear existing items
+
+      let total = 0;
+      cart.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('cart-item');
+        itemDiv.innerHTML = `
+          <span class="item-name">${item.name}</span>
+          <span class="item-price">${item.price.toLocaleString()}₫</span>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+        total += item.price;
+      });
+
+      totalElement.innerText = 'Tổng: ' + total.toLocaleString() + '₫';
+      if (cartCount > 0) {
+        checkoutButton.disabled = false;
+        checkoutButton.innerText = 'Thanh toán';
+      } else {
+        checkoutButton.disabled = true;
+        checkoutButton.innerText = 'Thanh toán';
+      }
+    }
+  </script>
+</body>
+</html>

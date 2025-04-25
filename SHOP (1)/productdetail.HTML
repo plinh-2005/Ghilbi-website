@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products Details</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: rgb(243, 243, 243);
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero {
+      background-image: url('back8.jpg');
+      background-size: cover;
+      color: white;
+      height: 100px;
+      padding: 100px 0;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      background-repeat: no-repeat;
+    }
+
+    .product-section {
+      background: white;
+      max-width: 1100px;
+      margin: -80px auto 50px;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .product-images {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+    .product-images img.main {
+      width: 70%;
+      border-radius: 10px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .product-details {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+
+    .tabs span {
+      font-weight: bold;
+      cursor: pointer;
+      padding-bottom: 5px;
+    }
+
+    .tabs span.active {
+      border-bottom: 3px solid black;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    h2 {
+      margin: 10px 0;
+    }
+
+    .price {
+      margin: 20px 0;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      font-size: 18px;
+      color: red;
+    }
+
+    .hop-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .hop {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hop.add {
+      background-color: #295C33;
+      color: white;
+      font-weight: bold;
+    }
+
+    .hop.buy {
+      background-color: #f59f43;
+      color: black;
+      font-weight: bold;
+    }
+
+    .hop:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+
+
+    .also-viewed {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .also-viewed h3 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: normal;
+      letter-spacing: 2px;
+    }
+
+    .product-list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .product-item {
+      flex: 1;
+      min-width: 150px;
+      max-width: 180px;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .product-item img {
+      width: 80%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: 0.3s ease;
+    }
+
+    .product-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .product-item h4 {
+      margin: 0;
+    }
+
+    .product-item span {
+      color: gray;
+      font-size: 14px;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 8px 12px;
+    }
+
+    .back-button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    /* ================ thanh so luong ================ */
+    .quantity-selector {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+    }
+
+    .quantity-selector button {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    }
+
+    .quantity-selector button:hover {
+    background-color: #f0f0f0;
+    }
+
+    .quantity-selector input {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    “Let Ghibli Studio take you back to your magical childhood.”
+  </div>
+
+  <a href="thushop.html" class="back-button"> ← Shop</a>
+
+  <div class="product-section">
+    <div class="product-images">
+      <img src="dvd1.PNG" class="main" alt="">
+    </div>
+    <div class="product-details">
+      <div class="tabs">
+        <span class="tab-link active" data-tab="review">REVIEW</span>
+        <span class="tab-link" data-tab="detail">CHI TIẾT</span>
+      </div>
+
+      <div id="review" class="tab-content active">
+        <h2 style="font-size: 30px;"><br>DVD Spirited Away</h2>
+        <p style="color: rgb(65, 65, 65);"><i>Chihiro - Vùng đất linh hồn</i></p>
+        <p>
+            <br>
+            <br>2001 / 125 phút
+            <br><br>Đạo diễn : Hayao Miyazaki
+            <br>Nhà sản xuất : Donald W. Ernst, John Lasseter, Toshio Suzuki
+            <br>Kịch bản :
+        </p>
+        <div class="price"><strong>Giá:</strong> 150.000 VND</div>
+
+        <p>Số lượng: </p>
+        <div class="quantity-selector">
+            <button onclick="decreaseQuantity()">−</button>
+            <input type="number" id="quantity" value="1" min="1">
+            <button onclick="increaseQuantity()">+</button>
+          </div>
+          
+          <script>
+            function increaseQuantity() {
+              let qtyInput = document.getElementById("quantity");
+              qtyInput.value = parseInt(qtyInput.value) + 1;
+            }
+          
+            function decreaseQuantity() {
+              let qtyInput = document.getElementById("quantity");
+              if (parseInt(qtyInput.value) > 1) {
+                qtyInput.value = parseInt(qtyInput.value) - 1;
+              }
+            }
+          </script>
+
+          
+<div class="hop-group">
+  <button class="hop add" onclick="addToCart(); window.location.href='../giohang.html';">THÊM VÀO GIỎ HÀNG</button>
+  <button class="hop buy" onclick="buyNow()" >MUA NGAY</button>
+</div>
+<!-- đếm số lượng hàng trong giỏ -->
+<script>
+  function addToCart() {
+    let count = parseInt(localStorage.getItem("cartCount")) || 0;
+    count++;
+    localStorage.setItem("cartCount", count);
+  }
+  </script>
+  
+<script>
+  function changeQty(delta) {
+    const qtyInput = document.getElementById("quantity");
+    let val = parseInt(qtyInput.value) + delta;
+    if (val < 1) val = 1;
+    qtyInput.value = val;
+  }
+
+function addToCart() {
+const product = {
+name: "DVD Spirited Away",
+variant: "",
+price: 150000,
+quantity: parseInt(document.getElementById("quantity").value),
+// image: "./dvd1.PNG"
+image: ""
+};
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const index = cart.findIndex(item => item.name === product.name && item.variant === product.variant);
+
+if (index !== -1) {
+cart[index].quantity += product.quantity;
+} else {
+cart.push(product);
+}
+
+localStorage.setItem("cart", JSON.stringify(cart));
+localStorage.setItem("addedToCart", "true");
+}
+
+
+</script>
+
+      </div>
+
+      <div id="detail" class="tab-content">
+        <p>
+            "Không gì kỳ diệu hơn!" – Joe Morgenstern, The Wall Street Journal <br><br>
+
+            Đoạt giải Oscar® cho Phim hoạt hình hay nhất,* cuộc phiêu lưu kỳ ảo tuyệt vời của Hayao Miyazaki là một kiệt tác chói lọi của một trong những nhà làm phim nổi tiếng nhất trong lịch sử hoạt hình.
+            
+            <br><br>Gia đình Chihiro đang chuyển đến một ngôi nhà mới, nhưng khi họ dừng lại trên đường để khám phá một ngôi làng bị bỏ hoang, cha mẹ cô bé đã trải qua một sự biến đổi bí ẩn và Chihiro bị đưa đến một thế giới của những linh hồn kỳ diệu do phù thủy Yubaba cai trị. Được đưa vào làm việc trong một nhà tắm ma thuật dành cho các linh hồn và ác quỷ, Chihiro phải sử dụng tất cả trí thông minh của mình để sống sót ở nơi mới lạ này, tìm cách giải thoát cha mẹ và trở về thế giới bình thường. Tràn ngập những sinh vật giàu trí tưởng tượng và câu chuyện ly kỳ, Vùng đất linh hồn đã trở thành một cú hit trên toàn thế giới và là một trong những bộ phim được giới phê bình đánh giá cao nhất mọi thời đại.
+            
+            <br><br>*2002: Phim hoạt hình hay nhất, Vùng đất linh hồn
+        </p>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="also-viewed">
+    <h3><b>_ SẢN PHẨM KHÁC CỦA GHIBLI STUDIO _</b></h3>
+    <div class="product-list">
+      <div class="product-item">
+        <img src="dvd3.PNG" alt="Earwig and the Witch">
+        <h4>150.000 VND</h4>
+        <span>Earwig and the Witch</span>
+      </div>
+      <div class="product-item">
+        <img src="dvd2.PNG" alt="My Neighbor Totoro">
+        <h4>150.000 VND</h4>
+        <span>My Neighbor Totoro</span>
+      </div>
+      <div class="product-item">
+        <img src="dvd4.PNG" alt="Howl Moving Castle">
+        <h4>150.000 VND</h4>
+        <span>Howl Moving Castle</span>
+      </div>
+      <div class="product-item">
+        <img src="dvd5.PNG" alt="From Up On Pop Hill">
+        <h4>150.000 VND</h4>
+        <span>From Up On Pop Hill</span>
+      </div>
+      <div class="product-item">
+        <img src="dvd6.PNG" alt="Kiki Delivery Service">
+        <h4>150.000 VND</h4>
+        <span>Kiki Delivery Service</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        tabLinks.forEach(l => l.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        link.classList.add('active');
+        document.getElementById(link.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

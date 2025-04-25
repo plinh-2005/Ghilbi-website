@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh toán Ghibli</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0fdf8;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+      background: url(./bgshop.jpg);
+      background-size: cover;  /* Đảm bảo ảnh phủ toàn bộ màn hình */
+    background-position: center center;  /* Đảm bảo ảnh căn giữa */
+    background-repeat: no-repeat;  /* Không lặp lại ảnh */
+    height: 100vh;  /* Chiều cao 100% màn hình */
+    margin: 0;  /* Loại bỏ margin mặc định */
+    background-attachment: fixed;
+    }
+    .checkout-wrapper {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2c5f4a;
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input[type="text"], select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    .summary {
+      background: #e9f7f1;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 30px;
+    }
+    .summary p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    .product-list {
+      margin-top: 16px;
+      padding: 10px;
+      background: #fdfdfd;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    .product-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .product-item:last-child {
+      border-bottom: none;
+    }
+    .product-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+    .product-info img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .product-details span {
+      display: block;
+    }
+    .total {
+      font-size: 18px;
+      font-weight: bold;
+      color: #2c5f4a;
+      text-align: right;
+      margin-top: 12px;
+    }
+    button {
+      margin-top: 24px;
+      padding: 12px 24px;
+      font-weight: bold;
+      border: none;
+      background: #f5a623;
+      color: white;
+      border-radius: 999px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+    }
+  /* ----Nút back ----- */
+  .back-buttons {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.back-btn {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #2c5f4a;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #d4f2ec;
+}
+  </style>
+</head>
+<body>
+  <div class="back-buttons">
+    <a href="javascript:history.back()" class="back-btn">← quay lại</a>
+  </div>
+  <div class="checkout-wrapper">
+    <h1>Thanh toán đơn hàng</h1>
+    <div class="form-group">
+      <label for="name">Họ và tên</label>
+      <input type="text" id="name" placeholder="Nhập họ tên của bạn">
+    </div>
+    <div class="form-group">
+      <label for="phone">Số điện thoại</label>
+      <input type="text" id="phone" placeholder="Nhập số điện thoại">
+    </div>
+    <div class="form-group">
+      <label for="address">Địa chỉ giao hàng</label>
+      <input type="text" id="address" placeholder="Nhập địa chỉ cụ thể">
+    </div>
+    <div class="form-group">
+      <label for="payment">Hình thức thanh toán</label>
+      <select id="payment">
+        <option value="cod">Thanh toán khi nhận hàng</option>
+        <option value="vtm">Thẻ ngân hàng (VTM)</option>
+        <option value="visa">Thẻ Visa/MasterCard</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="note">Lời nhắn cho shop (nếu có)</label>
+      <textarea id="note" rows="3" placeholder="Ví dụ: Giao buổi sáng, đóng gói kỹ giúp mình nhé!"></textarea>
+    </div>
+
+    <div class="summary">
+      <h3>Sản phẩm đã chọn:</h3>
+      <div class="product-list" id="product-list"></div>
+      <p class="total">Tổng tiền thanh toán: <span id="final-total">0₫</span></p>
+    </div>
+
+    <button onclick="confirmOrder()">Xác nhận đặt hàng</button>
+  </div>
+
+  <script>
+    function loadCheckoutData() {
+      const total = localStorage.getItem("checkoutTotal") || 0;
+      const items = JSON.parse(localStorage.getItem("checkoutItems")) || [];
+
+      document.getElementById("final-total").innerText = Number(total).toLocaleString("vi-VN") + "₫";
+
+      const listEl = document.getElementById("product-list");
+      listEl.innerHTML = "";
+      items.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "product-item";
+        div.innerHTML = `
+          <div class="product-info">
+            <img src="${item.image}" alt="${item.name}" />
+            <div class="product-details">
+              <span><strong>${item.name}</strong></span>
+              <span>Phân loại: ${item.variant}</span>
+              <span>Số lượng: ${item.quantity}</span>
+            </div>
+          </div>
+          <span>${(item.price * item.quantity).toLocaleString("vi-VN")}₫</span>
+        `;
+        listEl.appendChild(div);
+      });
+    }
+
+    function confirmOrder() {
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+
+      if (!name || !phone || !address) {
+        alert("Vui lòng điền đầy đủ thông tin!");
+        return;
+      }
+      alert("🎉 Đặt hàng thành công! Cảm ơn bạn đã ủng hộ Ghibli Store.");
+      window.location.href = "home.html";
+    }
+
+    window.onload = loadCheckoutData;
+  </script>
+</body>
+</html>

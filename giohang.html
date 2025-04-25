@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Giỏ hàng</title>
+  <link rel="icon" href="https://png.pngtree.com/png-clipart/20240329/original/pngtree-wheeled-shopping-cart-icon-vector-png-image_14711666.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5fdfb;
+      color: #333;
+      background: rgba(255, 255, 255, 0.8); 
+      background: url(./bgshop.jpg);
+      background-size: cover;  /* Đảm bảo ảnh phủ toàn bộ màn hình */
+    background-position: center center;  /* Đảm bảo ảnh căn giữa */
+    background-repeat: no-repeat;  /* Không lặp lại ảnh */
+    height: 100vh;  /* Chiều cao 100% màn hình */
+    margin: 0;  /* Loại bỏ margin mặc định */
+    background-attachment: fixed;
+      }
+ /* ----Nút back ----- */
+      .back-buttons {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.back-btn {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #2c5f4a;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #d4f2ec;
+}
+
+    
+    .cart-wrapper {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      font-size: 28px;
+      color: #2c5f4a;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background: #d4f2ec;
+      color: #2c5f4a;
+    }
+    td img {
+      width: 60px;
+      border-radius: 10px;
+    }
+    .variant {
+      font-size: 13px;
+      color: #777;
+    }
+    .quantity {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .quantity button {
+      width: 26px;
+      height: 26px;
+      border: none;
+      background: #a0d3c4;
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .remove-btn {
+      color: #f44336;
+      cursor: pointer;
+    }
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #2c5f4a;
+    }
+    .checkout-btn {
+      margin-top: 10px;
+      background: #f5a623;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: bold;
+      float: right;
+      cursor: pointer;
+    }
+    /* Chọn tất cả */
+    .select-all {
+      margin-bottom: 10px;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    /* Xóa all */
+    .clear-all-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.clear-all-btn:hover {
+  background-color: #e64545;
+}
+
+  </style>
+</head>
+<body>
+  <div class="cart-wrapper">
+    <h1>🛒 Giỏ hàng Ghibli của bạn</h1>
+    <div class="back-buttons">
+      <a href="javascript:history.back()" class="back-btn">← quay lại</a>
+    </div>
+
+    <div class="select-clear-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <div class="select-all">
+        <input type="checkbox" id="select-all" onchange="toggleSelectAll(this)">
+        <label for="select-all">Chọn tất cả</label>
+      </div>
+      <button class="clear-all-btn" onclick="clearCart()">🗑️ Xóa tất cả</button>
+    </div>
+    <script>
+      function clearCart() {
+  if (confirm("Bạn có chắc chắn muốn xóa tất cả sản phẩm khỏi giỏ hàng không?")) {
+    cart = [];
+    saveCart();
+    renderCart();
+  }
+}
+
+    </script>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Sản phẩm</th>
+          <th>Đơn giá</th>
+          <th>Số lượng</th>
+          <th>Thành tiền</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="cart-body"></tbody>
+    </table>
+
+    <div class="total">
+      Tổng cộng: <span id="total-price">0₫</span>
+      <br>
+      <a href="./formtt.html">
+      <button class="checkout-btn" onclick="checkout()">Thanh toán</button>
+    </a>
+    </div>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function formatPrice(price) {
+      return price.toLocaleString("vi-VN") + "₫";
+    }
+
+    function renderCart() {
+      const tbody = document.getElementById("cart-body");
+      tbody.innerHTML = "";
+      cart.forEach((item, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><input type="checkbox" class="item-checkbox" data-index="${index}" onchange="calculateTotal()"></td>
+          <td style="text-align: left">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img src="${item.image}" alt="${item.name}" />
+              <div>
+                <strong>${item.name}</strong><br>
+                <span class="variant">${item.variant}</span>
+              </div>
+            </div>
+          </td>
+          <td>${formatPrice(item.price)}</td>
+          <td>
+            <div class="quantity">
+              <button onclick="changeQuantity(${index}, -1)">-</button>
+              <span>${item.quantity}</span>
+              <button onclick="changeQuantity(${index}, 1)">+</button>
+            </div>
+          </td>
+          <td>${formatPrice(item.price * item.quantity)}</td>
+          <td><span class="remove-btn" onclick="removeItem(${index})">Xóa</span></td>
+        `;
+        tbody.appendChild(row);
+      });
+      calculateTotal();
+    }
+
+    function toggleSelectAll(checkbox) {
+      document.querySelectorAll(".item-checkbox").forEach(cb => cb.checked = checkbox.checked);
+      calculateTotal();
+    }
+
+    function changeQuantity(index, amount) {
+      cart[index].quantity += amount;
+      if (cart[index].quantity < 1) cart[index].quantity = 1;
+      saveCart();
+      renderCart();
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      saveCart();
+      renderCart();
+    }
+
+    function saveCart() {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function calculateTotal() {
+      const checkboxes = document.querySelectorAll(".item-checkbox");
+      let total = 0;
+      checkboxes.forEach((cb, i) => {
+        if (cb.checked) total += cart[i].price * cart[i].quantity;
+      });
+      document.getElementById("total-price").innerText = formatPrice(total);
+    }
+
+    function checkout() {
+      alert("✨ Đang tiến hành thanh toán những món bạn chọn!");
+    }
+
+    renderCart();
+
+    ///
+    function calculateTotal() {
+  const checkboxes = document.querySelectorAll(".item-checkbox");
+  let total = 0;
+  const selectedItems = [];
+
+  checkboxes.forEach((cb, i) => {
+    if (cb.checked) {
+      total += cart[i].price * cart[i].quantity;
+      selectedItems.push(cart[i]);
+    }
+  });
+
+  localStorage.setItem("checkoutItems", JSON.stringify(selectedItems));
+  localStorage.setItem("checkoutTotal", total);
+  document.getElementById("total-price").innerText = formatPrice(total);
+}
+
+  </script>
+</body>
+</html>

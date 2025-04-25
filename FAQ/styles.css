@@ -1,0 +1,475 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Background lớp dưới */
+.background {
+    position: absolute;
+    top: auto;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    margin-top: 200px; /* Đẩy xuống dưới header (tuỳ header cao bao nhiêu) */
+    
+
+}
+
+
+.header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+background-color: #278e9c; /* xanh pastel dịu nè 🌿 */
+  }
+
+  /* Header */
+.header2 {
+    background-color: white !important; 
+    color: #278e9c !important;
+    text-align: left;
+    padding: 20px 5px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.header2 h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.header2 p {
+    font-size: 1.6rem;         /* Tăng cỡ chữ */
+    padding-left: 20px;        /* Lùi sang phải 20px */
+}
+
+  /* chữ logo */
+  .ghibli-wrap {
+display: flex;
+align-items: center;
+gap: 16px; /* khoảng cách giữa logo và chữ */
+}
+s
+.logo {
+width: auto;
+height: auto;
+}
+.ghibli-box {
+text-align: right;
+color: white;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Bóng mờ nhẹ */
+font-family: Arial, sans-serif;
+line-height: 1.1; /* Cho các dòng sát nhau */
+}
+.logo {
+  height: 70px;
+  margin-bottom: 0;
+}
+.studio {
+font-size: 16px;
+margin: 0;
+color: white;
+}
+
+.ghibli {
+font-size: 48px;
+font-weight: bold;
+margin: 0;
+}
+
+.jp {
+font-size: 16px;
+margin: 0;
+letter-spacing: 1px;
+}
+
+.studio {
+font-size: 16px;
+margin: 0;
+}
+
+.ghibli {
+font-size: 48px;
+font-weight: bold;
+margin: 0;
+}
+
+.jp {
+font-size: 16px;
+margin: 0;
+letter-spacing: 1px;
+}
+/* navigation bar */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+  }
+  nav a:hover {
+    color: #ffc107;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #ffc107;
+    ;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .icons i {
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .search-box {
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+  }
+
+
+
+
+/* Body */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Header */
+.header2 {
+    background-color: #279e9c; /* Đã đổi sang màu xanh ngọc */
+    color: white;
+    text-align: left;
+    padding: 20px 5px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+header p {
+    font-size: 1.6rem;         /* Tăng cỡ chữ */
+    padding-left: 20px;        /* Lùi sang phải 20px */
+}
+
+/* FAQ */
+#faq {
+    width: 80%;
+    max-width: 1000px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+}
+
+#faq h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column; /* Sắp xếp dọc thay vì ngang */
+    gap: 15px;
+    width: 100%;
+}
+
+
+.faq-item {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #f4b400;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+    background-color: #FF69B4;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+
+/* Câu trả lời */
+.faq-answer {
+    display: none;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-left: 3px solid #4CAF50;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+
+/* Hiển thị khi mở */
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+
+/* Đổi dấu + thành - */
+.faq-item.open .faq-icon {
+    content: "-";
+    transform: rotate(45deg); /* Làm dấu + thành dấu x hoặc – tuỳ style */
+}
+
+
+.faq-block {
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.faq-title {
+    font-size: 1.8rem;
+    color: #279e9c;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+#faq {
+    background-color: transparent;
+}
+
+
+/* ==== Totoro Chat Box ==== */
+.chat-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 60px;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  .chat-box {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 300px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 999;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  .chat-box header {
+    background: #4caf50;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .chat-box .messages {
+    padding: 15px;
+    height: 150px;
+    overflow-y: auto;
+  }
+
+  .chat-box input {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    outline: none;
+  }
+
+  /* Chat button */
+  #chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    border: none;
+    width: 60px;
+    height: 60px;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+    background-size: cover;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  /* Chat box */
+  #chat-box {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    max-height: 400px;
+    background: #f7f7f7;
+    color: #333;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 999;
+  }
+
+  #chat-header {
+    background: #8cc0a7;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  .message {
+    margin: 5px 0;
+    padding: 8px 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+  }
+
+  .user {
+    background: #dff0d8;
+    align-self: flex-end;
+  }
+
+  .totoro {
+    background: #cfe2f3;
+    align-self: flex-start;
+  }
+
+  #chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background: #eee;
+  }
+
+  #message-input {
+    flex: 1;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+  }
+
+  #send-btn, #emoji-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+
+  main {
+    flex: 1;
+}
+
+  /* Footer */
+.footer {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white;
+    text-align: center;
+    padding: 50px 100px !important;
+    font-size: 1rem;
+    position: relative;
+    z-index: 10;
+    width: 100vw 
+    
+  
+}

@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Ghibli - About Us</title>
+  
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="../header/Layer 1.png" type="image/png">
+
+  <style>
+    .team-carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px 0;
+      scroll-snap-type: x mandatory;
+    }
+    .team-member {
+      flex: 0 0 auto;
+      width: 250px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      scroll-snap-align: center;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .team-member:hover {
+      transform: scale(1.05);
+    }
+    .team-member h3 {
+      margin: 10px 0 5px;
+      color: #ffe4b5;
+    }
+    .team-member img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      color: #fff;
+      animation: popUp 0.4s ease forwards;
+    }
+    .close-btn {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    @keyframes popUp {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+   
+    
+    /* style.css => background chỗ này nè*/
+
+
+    body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: url('./1.Back.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.hero {
+  display: flex; /* Sử dụng Flexbox để căn giữa nội dung */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  text-align: center;
+  padding: 50px 20px; /* Giảm padding ở trên và dưới */
+  background: rgba(0, 0, 0, 0.4);
+  height: 100vh; /* Đảm bảo hero chiếm toàn bộ chiều cao màn hình */
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff; /* Đảm bảo chữ màu trắng để dễ đọc */
+  animation: fadeIn 2s ease forwards;
+}
+
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  animation: fadeIn 2s ease forwards;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  animation: fadeIn 3s ease forwards;
+}
+
+.section {
+  padding: 80px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  margin: 40px 60px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffebcd;
+}
+
+.section p,
+.section li {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #fdfdfd;
+}
+
+ul {
+  list-style-type: '🌟 ';
+  padding-left: 20px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Nhân viên*/
+
+/*Thử*/
+.team-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.team-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.team-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.team-member {
+  flex: 0 0 auto;
+  width: 220px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  scroll-snap-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.team-member:hover {
+  transform: scale(1.05);
+}
+.team-member img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.team-member h3 {
+  margin: 10px 0 5px;
+  color: #ffe4b5;
+  font-size: 1.1rem;
+}
+.team-member p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.nav-btn {
+  background-color: #c8e6c9;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  color: #2e7d32;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+.nav-btn:hover {
+  background-color: #a5d6a7;
+}
+.left {
+  position: absolute;
+  left: 0;
+}
+.right {
+  position: absolute;
+  right: 0;
+}
+
+
+ /*Giá trị cốt lõi*/
+ .section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.core-values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.value-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.value-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #2e2e2e;
+}
+
+.value-card p {
+  color: #555;
+  line-height: 1.5;
+}
+ /*Lịch sử */
+ .vertical-timeline {
+  position: relative;
+  margin: 40px 0;
+  padding-left: 30px;
+  border-left: 3px solid #bff3c1;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.timeline-year {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #bff3c1;
+  margin-bottom: 5px;
+}
+
+.timeline-content {
+  background-color: #f9f9f9;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.timeline-content h3 {
+  margin: 0 0 5px;
+  color: #333;
+}
+
+.timeline-content p {
+  margin: 0;
+  color: #555;
+}
+
+/*Thông tin chung*/
+
+.about-ghibli {
+  padding: 4rem 2rem;
+  background-color: rgba(0, 0, 0, 0.4); /* đồng bộ với .hero */
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  color: #fff;
+  margin: 40px 60px; /* giống như .section */
+}
+
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+  font-family: 'GhibliFont', sans-serif;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.about-content {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #f5f5f5;
+  line-height: 1.8;
+}
+
+
+/*Phần pm*/
+* {
+  box-sizing: border-box;
+}
+body {
+margin: 0;
+font-family: 'Segoe UI', sans-serif;
+color: white;
+overflow-x: hidden;
+background-color:none; /* hoặc nền tùy bé chọn cho phần còn lại */
+}
+
+/* ==== Header ==== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+background-color: #278e9c; /* xanh pastel dịu nè 🌿 */
+}
+
+/* chữ logo */
+.ghibli-wrap {
+display: flex;
+align-items: center;
+gap: 16px; /* khoảng cách giữa logo và chữ */
+}
+s
+.logo {
+width: auto;
+height: auto;
+}
+.ghibli-box {
+text-align: right;
+color: white;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Bóng mờ nhẹ */
+font-family: Arial, sans-serif;
+line-height: 1.1; /* Cho các dòng sát nhau */
+}
+.logo {
+height: 70px;
+margin-bottom: 0;
+}
+.studio {
+font-size: 16px;
+margin: 0;
+color: white;
+}
+
+.ghibli {
+font-size: 48px;
+font-weight: bold;
+margin: 0;
+}
+
+.jp {
+font-size: 16px;
+margin: 0;
+letter-spacing: 1px;
+}
+
+.studio {
+font-size: 16px;
+margin: 0;
+}
+
+.ghibli {
+font-size: 48px;
+font-weight: bold;
+margin: 0;
+}
+
+.jp {
+font-size: 16px;
+margin: 0;
+letter-spacing: 1px;
+}
+/* navigation bar */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+nav a:hover {
+  color: #ffc107;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #ffc107;
+  ;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icons i {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.search-box {
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+/* ==== Totoro Chat Box ==== */
+.chat-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 65px;
+  height: 60px;
+  background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+  background-size: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.chat-box {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 300px;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: none;
+  z-index: 999;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.chat-box header {
+  background: #4caf50;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.chat-box .messages {
+  padding: 15px;
+  height: 150px;
+  overflow-y: auto;
+}
+
+.chat-box input {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #ccc;
+  padding: 10px;
+  outline: none;
+}
+
+/* Chat button */
+#chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  border: none;
+  width: 60px;
+  height: 60px;
+  background-image: url('https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png');
+  background-size: cover;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Chat box */
+#chat-box {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background: #f7f7f7;
+  color: #333;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 999;
+}
+
+#chat-header {
+  background: #8cc0a7;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  margin: 5px 0;
+  padding: 8px 10px;
+  border-radius: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user {
+  background: #dff0d8;
+  align-self: flex-end;
+}
+
+.totoro {
+  background: #cfe2f3;
+  align-self: flex-start;
+}
+
+#chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background: #eee;
+}
+
+#message-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+}
+
+#send-btn, #emoji-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/*fix*/
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* Tạo khoảng cách cho phần .section */
+.section {
+margin-bottom: 100px; /* Thêm khoảng cách dưới phần đội ngũ nhân sự */
+}
+
+/* Kiểm tra footer */
+footer {
+position: relative;
+z-index: 5; /* Đảm bảo footer ở trên tất cả */
+margin-top: 20px; /* Thêm margin trên nếu cần */
+}
+  </style>
+</head>
+
+
+
+
+<body>
+  <canvas id="stars"></canvas>
+  
+
+  <!-- Header -->
+<header>
+  <a href="../home.html" style="text-decoration: none;"> <div class="ghibli-wrap">
+  <img class="logo" src="./logo.png">
+  <div class="ghibli-box">
+      <p class="studio">Studio</p>
+      <h1 class="ghibli">Ghibli</h1>
+      <p class="jp">スタジオジブリ</p>
+    </div>
+  </div>
+</a>
+<nav>
+  <ul>
+    <li><a href="./index.html">About Us</a></li>
+    <li><a href="../filmography_html/filmography.html">Filmography</a></li>
+    <li><a href="../SHOP (1)/thushop.html">Shop</a></li>
+    <li><a href="../Blogfinal.html/index.html">Blog</a></li>
+    <li><a href="../FAQ/cauhoi.html">FAQs</a></li>
+    <li><a href="../Career page/career page.html">Careers</a></li>
+    <li><a href="../SHOP (1)/contactus.html">Contact</a></li>
+  </ul>
+</nav>
+<div class="icons">
+  <i class="fas fa-search"></i>
+  <input type="text" class="search-box" placeholder="Search..." />
+  <a href="./giohang.html" style="color: white;">
+  <i class="fas fa-shopping-cart"></i>
+</a>
+  <i class="fas fa-user"></i>
+</div>
+<script>
+  window.addEventListener("scroll", function () {
+    const header = document.querySelector("header");
+    header.classList.toggle("scrolled", window.scrollY > 0);
+  });
+</script>
+
+</header>
+<!--PM-->
+
+  <div class="hero">
+    <h1 class="fade-in">About Us</h1>
+  </div>
+  
+</head>
+
+
+<!--body-->
+
+<body>
+    <!--Giới thiệu-->
+<section id="about" class="about-ghibli">
+    <h2 class="section-title">Giới thiệu về Studio Ghibli</h2>
+    <div class="about-container">
+      <img src="./1.Giới thiệu.jpg" alt="Studio Ghibli" class="about-image">
+      <div class="about-content">
+        <p><strong>Studio Ghibli</strong> là một hãng phim hoạt hình nổi tiếng được thành lập vào năm 1985 bởi hai đạo diễn huyền thoại <strong>Hayao Miyazaki</strong> và <strong>Isao Takahata</strong>. Tọa lạc tại Tokyo, Nhật Bản, Ghibli đã để lại dấu ấn sâu đậm trong lòng khán giả trên toàn thế giới qua những tác phẩm đậm chất thơ, cảm xúc và nhân văn.</p>
+        
+        <p>Với những bộ phim như <em>Spirited Away</em>, <em>My Neighbor Totoro</em>, <em>Howl's Moving Castle</em> và <em>Princess Mononoke</em>, Ghibli không chỉ ghi dấu trong ngành công nghiệp điện ảnh mà còn truyền cảm hứng cho hàng triệu người yêu nghệ thuật và thiên nhiên.</p>
+        
+        <p>Phong cách đặc trưng của Ghibli bao gồm:</p>
+        <ul>
+          <li>Hình ảnh được vẽ tay tinh tế và đầy cảm xúc</li>
+          <li>Âm nhạc du dương, sâu lắng (nổi bật với nhà soạn nhạc Joe Hisaishi)</li>
+          <li>Nhân vật mạnh mẽ, độc lập và có chiều sâu</li>
+          <li>Thông điệp nhân văn, gần gũi với thiên nhiên và cuộc sống</li>
+        </ul>
+  
+        <p><em>Studio Ghibli không chỉ là một hãng phim – đó là cả một thế giới đầy phép màu, nơi mà trí tưởng tượng được bay cao không giới hạn.</em></p>
+      </div>
+    </div>
+  </section>
+  
+
+  </section>
+
+  <!--Lịch sử phát triển-->
+
+  <section class="section" id="history">
+    <div class="content reveal">
+      <h2>Lịch sử phát triển</h2>
+      <div class="vertical-timeline">
+        
+        <div class="timeline-item">
+          <div class="timeline-year">1984</div>
+          <div class="timeline-content">
+            <h3>Khởi đầu</h3>
+            <p>Ra mắt "Nausicaä of the Valley of the Wind" – tiền đề thành lập Studio Ghibli.</p>
+          </div>
+        </div>
+  
+        <div class="timeline-item">
+          <div class="timeline-year">1988</div>
+          <div class="timeline-content">
+            <h3>Totoro trở thành biểu tượng</h3>
+            <p>Ra mắt "My Neighbor Totoro" – biểu tượng của Ghibli và văn hóa Nhật.</p>
+          </div>
+        </div>
+  
+        <div class="timeline-item">
+          <div class="timeline-year">1997</div>
+          <div class="timeline-content">
+            <h3>Thành công thương mại lớn</h3>
+            <p>"Princess Mononoke" – bước ngoặt lớn, khẳng định vị thế quốc tế của Ghibli.</p>
+          </div>
+        </div>
+  
+        <div class="timeline-item">
+          <div class="timeline-year">2001</div>
+          <div class="timeline-content">
+            <h3>Vươn tầm thế giới</h3>
+            <p>"Spirited Away" giành giải Oscar – đỉnh cao nghệ thuật hoạt hình.</p>
+          </div>
+        </div>
+  
+        <div class="timeline-item">
+          <div class="timeline-year">2020</div>
+          <div class="timeline-content">
+            <h3>Kỷ nguyên mới</h3>
+            <p>Ghibli Park mở cửa & Studio phát triển hướng đi kỹ thuật số.</p>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- Modal -->
+  <div class="modal" id="eventModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeEventModal()">&times;</span>
+      <h3 id="eventYear"></h3>
+      <p id="eventDesc"></p>
+    </div>
+  </div>
+  
+<!--Sứ mệnh-->
+
+  <section class="section" id="mission">
+    <div class="content reveal">
+      <h2>Sứ mệnh</h2>
+      <p>Ghibli mong muốn kể những câu chuyện cảm động, đầy trí tưởng tượng và truyền tải thông điệp tích cực về con người và thiên nhiên. Mỗi bộ phim là một hành trình kỳ ảo dẫn dắt người xem đến với những miền đất mơ mộng và sâu sắc.</p>
+    </div>
+  </section>
+
+  <section class="section" id="values">
+    <div class="content reveal">
+      <h2 class="section-title">Giá trị cốt lõi</h2>
+      <div class="core-values-grid">
+        <div class="value-card">
+          <h3>Sáng tạo không giới hạn</h3>
+          <p>Chúng tôi không ngừng khám phá và thể hiện thế giới tưởng tượng bằng cách riêng của mình.</p>
+        </div>
+        <div class="value-card">
+          <h3>Gắn bó với thiên nhiên</h3>
+          <p>Thiên nhiên là nguồn cảm hứng vô tận trong mọi tác phẩm của chúng tôi.</p>
+        </div>
+        <div class="value-card">
+          <h3>Nhân văn & cảm xúc</h3>
+          <p>Mỗi câu chuyện đều tôn vinh những giá trị nhân văn và rung cảm chân thành.</p>
+        </div>
+        <div class="value-card">
+          <h3>Tinh tế trong nghệ thuật</h3>
+          <p>Chúng tôi chăm chút từng khung hình để mang lại trải nghiệm thẩm mỹ sâu sắc.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!--Đội ngũ nhân sự-->
+
+  <section class="section" id="team">
+    <div class="content reveal">
+      <h2>Đội ngũ nhân sự</h2>
+      <div class="team-wrapper">
+        <button class="nav-btn left" onclick="scrollTeam(-1)">&#8592;</button>
+        
+        <div class="team-carousel" id="teamCarousel">
+          <div class="team-member" onclick="openModal('Hayao Miyazaki', 'Đạo diễn huyền thoại người sáng lập Studio Ghibli.')">
+            <img src="./2.Hayao miyazaki.webp" alt="Hayao Miyazaki">
+            <h3>Hayao Miyazaki</h3>
+            <p>Đạo diễn</p>
+          </div>
+          <div class="team-member" onclick="openModal('Isao Takahata', 'Đồng sáng lập Ghibli, cánh tay phải của Miyazaki.')">
+            <img src="./3.isao takahata.jpg" alt="Isao Takahata">
+            <h3>Isao Takahata</h3>
+            <p>Đồng sáng lập</p>
+          </div>
+          <div class="team-member" onclick="openModal('Joe Hisaishi', 'Nhạc sĩ tài hoa gắn liền với âm nhạc Ghibli.')">
+            <img src="./4.Joe Hisaishi.jpg" alt="Joe Hisaishi">
+            <h3>Joe Hisaishi</h3>
+            <p>Nhạc sĩ</p>
+          </div>
+          <div class="team-member" onclick="openModal('Toshio Suzuki', 'Nhà sản xuất chính và đồng sáng lập Ghibli.')">
+            <img src="./5.toshio suzuki.jpg" alt="Toshio Suzuki">
+            <h3>Toshio Suzuki</h3>
+            <p>Nhà sản xuất</p>
+          </div>
+          <div class="team-member" onclick="openModal('Hiromasa Yonebayashi', 'Đạo diễn trẻ với nhiều tác phẩm nổi bật.')">
+            <img src="./6.Hiromasa yonebayashi.jpg" alt="Hiromasa Yonebayashi">
+            <h3>Hiromasa Yonebayashi</h3>
+            <p>Đạo diễn</p>
+          </div>
+          <div class="team-member" onclick="openModal('Katsuya Kondō', 'Họa sĩ nhân vật chủ chốt của Ghibli.')">
+            <img src="./7.katsuyakondo.jpg" alt="Katsuya Kondo">
+            <h3>Katsuya Kondō</h3>
+            <p>Họa sĩ</p>
+          </div>
+          <div class="team-member" onclick="openModal('Kazuo Oga', 'Giám đốc mỹ thuật với bối cảnh thiên nhiên ấn tượng.')">
+            <img src="./8.kazuo koga.png" alt="Kazuo Oga">
+            <h3>Kazuo Oga</h3>
+            <p>Mỹ thuật</p>
+          </div>
+        </div>
+  
+        <button class="nav-btn right" onclick="scrollTeam(1)">&#8594;</button>
+      </div>
+      <script>
+        function scrollTeam(direction) {
+          const container = document.getElementById("teamCarousel");
+          const scrollAmount = 240; // tương đương 1 team-member
+          container.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+        }
+      </script>
+  </div>
+  </section>
+  
+  <canvas id="stars"></canvas>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    window.addEventListener('scroll', () => {
+      reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    });
+
+    // Modal for team info
+    function openModal(name, info) {
+      document.getElementById('modalName').textContent = name;
+      document.getElementById('modalInfo').textContent = info;
+      document.getElementById('memberModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('memberModal').style.display = 'none';
+    }
+
+    // Star effect
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5,
+        velocity: Math.random() * 0.3
+      });
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    function updateStars() {
+      stars.forEach(star => {
+        star.y += star.velocity;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+    }
+
+    function animateStars() {
+      drawStars();
+      updateStars();
+      requestAnimationFrame(animateStars);
+    }
+
+    animateStars();
+  
+  
+  </script>
+
+
+
+
+<!-- Totoro Chat -->
+<button id="chat-btn"></button>
+<div id="chat-box">
+  <div id="chat-header">Totoro Chatbox 🌱</div>
+  <div id="chat-body"></div>
+  <div id="chat-input">
+    <button id="emoji-btn">😊</button>
+    <input type="text" id="message-input" placeholder="Type your message..." />
+    <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+<script>
+ const chatBtn = document.getElementById('chat-btn');
+ const chatBox = document.getElementById('chat-box');
+ const sendBtn = document.getElementById('send-btn');
+ const chatBody = document.getElementById('chat-body');
+ const messageInput = document.getElementById('message-input');
+ const emojiBtn = document.getElementById('emoji-btn');
+
+ chatBtn.onclick = () => {
+   chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+ };
+
+ function appendMessage(text, sender) {
+   const msg = document.createElement('div');
+   msg.className = 'message ' + sender;
+   msg.textContent = text;
+   chatBody.appendChild(msg);
+   chatBody.scrollTop = chatBody.scrollHeight;
+ }
+
+ sendBtn.onclick = () => {
+   const text = messageInput.value.trim();
+   if (text) {
+     appendMessage(text, 'user');
+     setTimeout(() => appendMessage("Totoro is thinking... 🌧️", 'totoro'), 500);
+     messageInput.value = '';
+   }
+ };
+
+ emojiBtn.onclick = () => {
+   const emojis = ["😊","🌸","😢","🎵","🍃","✨","💖","😄"];
+   const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+   messageInput.value += emoji;
+ };
+</script>
+
+
+
+
+<!-- footer -->
+<footer style="background: #222; color: #fff; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 20px;">
+   <img src="https://static.vecteezy.com/system/resources/previews/028/728/142/non_2x/totoro-black-eye-free-png.png" alt="Totoro Icon" style="width: 60px; margin-bottom: 10px;">
+   <h2 style="font-family: 'Georgia', serif; margin: 0 0 10px; color: white;">Studio Ghibli</h2>
+   <p style="max-width: 500px; font-size: 14px; line-height: 1.6; color: #ccc;">
+     “Once you've met someone, you never really forget them. It just takes a while for your memories to return.”<br>
+     — *Spirited Away*—
+   </p>
+   <div style="margin: 20px 0;">
+     <a href="./index.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">About Us</a>
+     <a href="../filmography_html/filmography.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Filmography</a>
+     <a href="../SHOP (1)/thushop.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Shop</a>
+     <a href="../Blogfinal.html/index.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Blog</a>
+     <a href="../SHOP (1)/contactus.html" style="color: #ccc; margin: 0 10px; text-decoration: none;">Contact</a>
+   </div>
+   <div style="margin-bottom: 10px;">
+     <a href="https://www.facebook.com/phuongmaik5"><i class="fab fa-facebook" style="color: #ccc; margin: 0 8px;"></i></a>
+     <a href="https://www.instagram.com/pmicee_05_hehe?igsh=MXZwamx6M2NsNHhtMw=="><i class="fab fa-instagram" style="color: #ccc; margin: 0 8px;"></i></a>
+     <a href="https://www.tiktok.com/@pm212k5?_t=ZS-8ttpPJm1fCm&_r=1"><i class="fab fa-tiktok" style="color: #ccc; margin: 0 8px;"></i></a>
+   </div>
+   <p style="font-size: 12px; color: #888;">© 2025 Studio Ghibli. All rights reserved.</p>
+ </footer>
+</main>
+
+<div class="modal" id="memberModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h3 id="modalName"></h3>
+    <p id="modalInfo"></p>
+  </div>
+</div>
+
+
+<!--js-->
+<script>
+function scrollTeam(direction) {
+    const carousel = document.getElementById("teamCarousel");
+    const scrollAmount = 240; // độ dài mỗi lần cuộn
+    carousel.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+  
+  function openModal(name, info) {
+    document.getElementById('modalName').textContent = name;
+    document.getElementById('modalInfo').textContent = info;
+    document.getElementById('memberModal').style.display = 'flex';
+  }
+  
+  function closeModal() {
+    document.getElementById('memberModal').style.display = 'none';
+  }
+  
+    
+  function openModal(name, info) {
+    document.getElementById('modalName').textContent = name;
+    document.getElementById('modalInfo').textContent = info;
+    document.getElementById('memberModal').style.display = 'flex';
+  }
+  
+  function closeModal() {
+    document.getElementById('memberModal').style.display = 'none';
+  }
+</script>  
+ 
+</body>
+</html>
